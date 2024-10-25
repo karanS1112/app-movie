@@ -1,0 +1,61 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.active {
+    color: red;
+    border: 1px solid yellow;
+    padding: auto;
+}
+
+/* Banner.css */
+.banner-container {
+    width: 100%;
+    /* max-width: 1200px; */
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.banner-slide {
+    position: relative;
+    text-align: center;
+}
+
+.banner-image {
+    width: 100%;
+    height: 22rem;
+}
+
+.banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.banner-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+.banner-content p {
+    font-size: 1.2em;
+}
+/* 404 page not found  */
+.position-relative {
+    background-image: url('http://localhost:5173/images/page.jpg');
+    background-size: cover;
+    height: 40rem;
+}
+
+.text-wrap {
+    position: relative;
+    z-index: 9999;
+    color: #fff;
+    text-align: center;
+    padding-top: 20%;
+}

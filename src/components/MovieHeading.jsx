@@ -56,6 +56,7 @@ const MovieHeading = () => {
       title: "Now Playing",
       data: movieLists.topRatedMovieList,
     },
+    
 
     {
       title: "Up Comming",

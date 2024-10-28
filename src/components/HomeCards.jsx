@@ -19,10 +19,11 @@ const HomeCards = ({ movieData }) => {
     arrows: true,
   };
   return (
+    <div className="container-fluid">
     <div className="slider-container home-card-slider">
       <Slider {...settings}>
         {movieData?.map((data, index) => (
-          <Link to={`/movie/${data.id}`}>
+          <Link style={{textDecorationColor: "transparent"}} to={`/movie/${data.id}`}>
             <div key={data.id} className="home-cards-wrap">
               <div
                 className="card text-white bg-black mb-3 p-1"
@@ -43,6 +44,7 @@ const HomeCards = ({ movieData }) => {
           </Link>
         ))}
       </Slider>
+    </div>
     </div>
   );
 };

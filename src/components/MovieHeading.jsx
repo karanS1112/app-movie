@@ -66,7 +66,7 @@ const MovieHeading = () => {
     // },
   ];
   return (
-    <div className="container">
+    <div className="">
       <div className="row">
         <div className="col-12">
           {titleData.map((data, index) => (

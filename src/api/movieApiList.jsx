@@ -33,3 +33,11 @@ export const popularMovieDataApi = async () => {
   });
   return response;
 };
+
+export const dataMovie = async (movieId) => {
+  const response = await axios({
+    method: "GET",
+    url: `${baseUrl}${movieId}?api_key=36dec023f16d2531d7df1a52eb67943f&language=en-US`,
+  });
+  return response;
+};

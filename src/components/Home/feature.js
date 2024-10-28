@@ -123,3 +123,17 @@ export const movieLists = {
   ],
 };
 
+
+// export const formatMovieList = (movies)=>{
+//   return movies.map((movie)=>{
+//     return{
+//       title: movie?.title,
+//       img: movie?.poster_path,
+//       rating: movie?.vote_average,
+//       description:"Checking",
+//       ...movie
+//     }
+//   })
+// }
+
+

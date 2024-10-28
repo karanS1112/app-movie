@@ -1,30 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import { NowPlayingMovieDataApi, topRatedMovieDataApi } from "../api/movieApiList";
+const HomeCards = ({movieData}) => {
 
-const HomeCards = () => {
-    const movieData = [
-        {
-            title: "Dead pool",
-            img: "https://img.freepik.com/free-photo/collage-about-movie-time-with-popcorn_23-2149946322.jpg?t=st=1729843765~exp=1729847365~hmac=6f9ba67ab9132b72dda496cbd0538f3eace301cdd58eee66c724a82be82ac6c4&w=740",
-            rating:5.4
-        },
-
-    ]
+console.log("data Home cards movieData   ",movieData)
+  var settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToScroll: 1,
+    slidesToShow: 4,
+    arrows: true,
+  };
   return (
-    <div class="row">
-      <div class="col-sm-6 mb-3 mb-sm-0">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">
-              With supporting text below as a natural lead-in to additional
-              content.
-            </p>
-            <a href="#" class="btn btn-primary">
-              Go somewhere
-            </a>
+    <div className="slider-container home-card-slider">
+      <Slider {...settings}>
+        {movieData.map((data, index) => (
+          <div key={data.id} className="home-cards-wrap">
+            <div
+              className="card text-white bg-black mb-3 p-1"
+              style={{ width: "18rem" }}
+            >
+              <img src={data.img} className="card-img-top" alt="..." />
+              <div className="card-body">
+                <h5 className="card-title">{data.original_title}</h5>
+                <p className="card-text">{data.overview}</p>
+                <h5> Rating {data.vote_average}</h5>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        ))}
+      </Slider>
     </div>
   );
 };

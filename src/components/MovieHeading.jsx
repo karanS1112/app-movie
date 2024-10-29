@@ -67,62 +67,14 @@ const MovieHeading = () => {
       title: "Up Comming",
       data: selector?.movieSlice?.upcoming,
     },
-    {
-      title: "Top Rated",
-      // data: movieLists.topRatedMovieList,
-    },
-    {
-      title: "Popular",
-      // data: movieLists.popularMovieList,
-    },
-    {
-      title: "Top Rated",
-      // data: movieLists.topRatedMovieList,
-    },
-    {
-      title: "Popular",
-      // data: movieLists.popularMovieList,
-    },
-    {
-      title: "Top Rated",
-      // data: movieLists.topRatedMovieList,
-    },
-    {
-      title: "Popular",
-      // data: movieLists.popularMovieList,
-    },
-    {
-      title: "Top Rated",
-      // data: movieLists.topRatedMovieList,
-    },
-    {
-      title: "Popular",
-      // data: movieLists.popularMovieList,
-    },
-    {
-      title: "Top Rated",
-      // data: movieLists.topRatedMovieList,
-    },
-    {
-      title: "Popular",
-      // data: movieLists.popularMovieList,
-    },
-    {
-      title: "Top Rated",
-      // data: movieLists.topRatedMovieList,
-    },
-    {
-      title: "Popular",
-      // data: movieLists.popularMovieList,
-    },
-    {
-      title: "Top Rated",
-      // data: movieLists.topRatedMovieList,
-    },
-    {
-      title: "Popular",
-      // data: movieLists.popularMovieList,
-    },
+    // {
+    //   title: "Top Rated",
+    //   data: movieLists.topRatedMovieList,
+    // },
+    // {
+    //   title: "Popular",
+    //   data: movieLists.popularMovieList,
+    // },
   ];
   return (
     <div className="">

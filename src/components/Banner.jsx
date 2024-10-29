@@ -34,7 +34,7 @@ const Banner = () => {
     },
   ];
   return (
-    <div className=" banner-container p-1">
+    <div className=" banner-container">
       <Slider {...settings}>
         {
         banners.map((banner, index) => (

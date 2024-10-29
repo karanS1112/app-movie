@@ -4,6 +4,8 @@ import HomeCards from "./HomeCards";
 // import { formatMovieList, movieLists } from "./Home/feature";
 import { useDispatch, useSelector } from "react-redux";
 import { setNowPlaying, setUpcoming } from "../store/reducer/movieReducer";
+import { MutatingDots } from "react-loader-spinner";
+import toast from "react-hot-toast";
 import {
   NowPlayingMovieDataApi,
   topRatedMovieDataApi,
@@ -11,10 +13,10 @@ import {
 } from "../api/movieApiList";
 const MovieHeading = () => {
   const dispatch = useDispatch();
-
+  // const [loading, setLoading] = useState(true);
   const selector = useSelector((state) => state);
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getNowPlayingMovieData();
@@ -23,28 +25,37 @@ const MovieHeading = () => {
   }, []);
 
   const getNowPlayingMovieData = async () => {
-    await NowPlayingMovieDataApi()
-      .then((res) => {
+    try {
+      await NowPlayingMovieDataApi().then((res) => {
         const nowPlayResponse = res.data.results;
         dispatch(setNowPlaying(nowPlayResponse));
-        // setTimeout(() => {
-        //   setLoading(false);
-        // }, 1000);
-      })
-      .catch((error) => {
-        console.log(error);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
       });
+    } catch (error) {
+      toast.error("Please check your internet connection");
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const getUpComingMovieData = async () => {
-    await upcomingMovieDataApi()
-      .then((res) => {
+    try {
+      await upcomingMovieDataApi().then((res) => {
         const upComingResponse = res.data.results;
         dispatch(setUpcoming(upComingResponse));
-      })
-      .catch((error) => {
-        console.log(error);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
       });
+    } catch (error) {
+      toast.error("Please check your internet connection");
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const titleData = [
@@ -56,27 +67,92 @@ const MovieHeading = () => {
       title: "Up Comming",
       data: selector?.movieSlice?.upcoming,
     },
-    // {
-    //   title: "Top Rated",
-    //   data: movieLists.topRatedMovieList,
-    // },
-    // {
-    //   title: "Popular",
-    //   data: movieLists.popularMovieList,
-    // },
+    {
+      title: "Top Rated",
+      // data: movieLists.topRatedMovieList,
+    },
+    {
+      title: "Popular",
+      // data: movieLists.popularMovieList,
+    },
+    {
+      title: "Top Rated",
+      // data: movieLists.topRatedMovieList,
+    },
+    {
+      title: "Popular",
+      // data: movieLists.popularMovieList,
+    },
+    {
+      title: "Top Rated",
+      // data: movieLists.topRatedMovieList,
+    },
+    {
+      title: "Popular",
+      // data: movieLists.popularMovieList,
+    },
+    {
+      title: "Top Rated",
+      // data: movieLists.topRatedMovieList,
+    },
+    {
+      title: "Popular",
+      // data: movieLists.popularMovieList,
+    },
+    {
+      title: "Top Rated",
+      // data: movieLists.topRatedMovieList,
+    },
+    {
+      title: "Popular",
+      // data: movieLists.popularMovieList,
+    },
+    {
+      title: "Top Rated",
+      // data: movieLists.topRatedMovieList,
+    },
+    {
+      title: "Popular",
+      // data: movieLists.popularMovieList,
+    },
+    {
+      title: "Top Rated",
+      // data: movieLists.topRatedMovieList,
+    },
+    {
+      title: "Popular",
+      // data: movieLists.popularMovieList,
+    },
   ];
   return (
     <div className="">
-      <div className="row">
-        <div className="col-12">
-          {titleData.map((data, index) => (
-            <div key={index}>
-              <SectionHeading title={data.title} />
-              <HomeCards movieData={data?.data} />
-            </div>
-          ))}
+      {loading ? (
+        <div className="">
+          <MutatingDots
+            visible={true}
+            height="100"
+            width="100"
+            color="#fd7e14"
+            secondaryColor="#ffc107"
+            radius="12.5"
+            ariaLabel="mutating-dots-loading"
+            wrapperStyle={{}}
+            wrapperClass="text-center-loader"
+          />
         </div>
-      </div>
+      ) : (
+        <div className="row">
+          <div className="col-12">
+            {titleData.map((data, index) => (
+              <div key={index}>
+                <SectionHeading title={data.title} />
+
+                <HomeCards movieData={data?.data} loading={loading} />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

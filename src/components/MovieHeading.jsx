@@ -98,7 +98,7 @@ const MovieHeading = () => {
             {titleData.map((data, index) => (
               <div key={index}>
                 <SectionHeading title={data.title} />
-                <HomeCards movieData={data?.data} loading={loading} />
+                <HomeCards key={data.id} movieData={data?.data} loading={loading} />
               </div>
             ))}
           </div>

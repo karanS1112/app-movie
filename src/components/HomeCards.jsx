@@ -6,40 +6,73 @@ import { Link } from "react-router-dom";
 const HomeCards = ({ movieData, loading }) => {
   const imageUri = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";
   var settings = {
-    dots: false,
+    // className: "center",
+    // centerMode: true,
     infinite: false,
-    speed: 500,
-    slidesToScroll: 2,
     slidesToShow: 4,
-    arrows: true,
+    slidesToScroll: 4,
+    centerPadding: 30,
+    slidesToShow: 5,
+    speed: 500,
+    margin: 20,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   return (
     <div className="container-fluid">
       <div className="slider-container home-card-slider">
         <Slider {...settings}>
           {movieData?.map((data, index) => (
-            <Link
-              style={{ textDecorationColor: "transparent" }}
-              to={`/movie/${data.id}`}
-            >
-              <div key={data.id} className="home-cards-wrap">
-                <div
-                  className="card text-white bg-black mb-3 p-1"
-                  style={{ width: "18rem" }}
-                >
-                  <img
-                    src={imageUri + data.poster_path}
-                    className="card-img-top"
-                    alt="..."
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{data.original_title}</h5>
-                    <p className="card-text">{data.overview}</p>
-                    <h5> Rating {data.vote_average}</h5>
+            <div key={data.id} className="home-cards-wrap">
+              <div
+                className="card text-white bg-white mb-3"
+                // style={{ width: "17rem" }}
+              >
+                <img
+                  src={imageUri + data.poster_path}
+                  className="card-img-top home-movie-img-size"
+                  alt="..."
+                />
+                <div className="card-body">
+                  <Link
+                    style={{ textDecorationColor: "transparent" }}
+                    to={`/movie/${data.id}`}
+                  >
+                    <h5 className="home-card-title">{data.original_title}</h5>
+                    <p className="home-card-description">{data.overview}</p>
+                  </Link>
+                  <div className="home-rating-position">
+                    <span className="home-movie-rating">
+                      {data.vote_average.toFixed(1)}%
+                    </span>
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
           ))}
         </Slider>
       </div>

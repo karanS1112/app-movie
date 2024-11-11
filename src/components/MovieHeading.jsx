@@ -77,9 +77,9 @@ const MovieHeading = () => {
     // },
   ];
   return (
-    <div className="">
+    <div className="container">
       {loading ? (
-        <div className="">
+        <div className="container">
           <MutatingDots
             visible={true}
             height="100"
@@ -98,7 +98,6 @@ const MovieHeading = () => {
             {titleData.map((data, index) => (
               <div key={index}>
                 <SectionHeading title={data.title} />
-
                 <HomeCards movieData={data?.data} loading={loading} />
               </div>
             ))}

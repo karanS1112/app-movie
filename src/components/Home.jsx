@@ -22,9 +22,9 @@ const Home = () => {
     <>
       <ScrollContainer>
         <ScrollPage>
-          <Animator animation={MoveOut(-1000, 1000)}>
+          {/* <Animator animation={MoveOut(-1000, 1000)}> */}
             <Banner />
-          </Animator>
+          {/* </Animator> */}
         </ScrollPage>
       </ScrollContainer>
 

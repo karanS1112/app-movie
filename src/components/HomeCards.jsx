@@ -3,6 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
+
 const HomeCards = ({ movieData, loading }) => {
   const imageUri = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";
   var settings = {
@@ -44,12 +45,12 @@ const HomeCards = ({ movieData, loading }) => {
   };
   return (
     <div className="container-fluid">
-      <div className="slider-container home-card-slider">
+      <div className="slider-container home-card-slider ">
         <Slider {...settings}>
           {movieData?.map((data, index) => (
-            <div key={data.id} className="home-cards-wrap">
+            <div key={data.id} className="home-cards-wrap slick-track">
               <div
-                className="card text-white bg-white mb-3"
+                className="card text-white bg-white mb-3 shadow-card-box "
                 // style={{ width: "17rem" }}
               >
                 <img
@@ -67,7 +68,9 @@ const HomeCards = ({ movieData, loading }) => {
                   </Link>
                   <div className="home-rating-position">
                     <span className="home-movie-rating">
-                      {data.vote_average.toFixed(1)}%
+                      {data.vote_average
+                        ? `${(data.vote_average * 10).toFixed(0)}%`
+                        : "N/A"}
                     </span>
                   </div>
                 </div>

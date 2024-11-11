@@ -7,8 +7,9 @@
 body {
     background-color: #000 !important;
     color: #fff !important;
+    height: 100vh;
+    font-family: Arial, sans-serif;
 }
-
 
 /* Banner.css */
 .banner-container {
@@ -88,31 +89,165 @@ body {
 
 .slick-track {
     display: flex !important;
-    gap: 10px;
+    gap: 5px !important;
     /* Adjust as needed */
 }
 
 .home-movie-img-size {
-    height: 250px;
+    height: 38vh;
+    width: 45vh;
 
 }
-.home-movie-rating{
+
+.home-movie-rating {
     display: inline-block;
     height: 40px;
     width: 38px;
     padding: 4px;
-    background-color: #000000;
+    background-color: rgba(255, 193, 7);
     border-radius: 50%;
     z-index: 1;
     font-size: 12px;
     font-weight: 600;
     position: relative;
     bottom: 130px;
-    left: 165px;
+    left: 170px;
     text-align: center;
     justify-content: center;
     padding-top: 10px;
+    color: #000;
 }
-.home-rating-position{
+
+.home-rating-position {
     position: absolute;
+}
+
+
+
+
+/* Banner.css */
+.banner-container {
+    width: 100%;
+    margin: 1px auto;
+    overflow: hidden;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.banner-slide {
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-image {
+    width: 100%;
+    height: 37rem;
+    object-fit: cover;
+}
+
+.banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+
+.banner-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.banner-content p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+/* 404 page not found  */
+.position-relative {
+    background-image: url('http://localhost:5173/images/page.jpg');
+    background-size: cover;
+    height: 40rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-wrap {
+    position: relative;
+    z-index: 9999;
+    color: #fff;
+    text-align: center;
+    padding-top: 20%;
+}
+
+.text-center-loader {
+    margin-left: 50%;
+}
+
+/* Home page  section  css */
+
+
+.home-card-title {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
+}
+
+.home-card-description {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: 12px;
+    color: #000;
+}
+
+.slick-track {
+    display: flex !important;
+    gap: 10px;
+    /* Adjust as needed */
+}
+
+.home-movie-img-size {
+    height: 38vh;
+    width: 45vh;
+    object-fit: cover;
+}
+
+.home-movie-rating {
+    display: inline-block;
+    height: 40px;
+    width: 38px;
+    padding: 4px;
+    background-color: rgba(255, 193, 7);
+    border-radius: 50%;
+    z-index: 1;
+    font-size: 12px;
+    font-weight: 600;
+    position: relative;
+    bottom: 130px;
+    left: 170px;
+    text-align: center;
+    justify-content: center;
+    padding-top: 10px;
+    color: #000;
+}
+
+.home-rating-position {
+    position: absolute;
+}
+
+.shadow-card-box {
+    box-shadow: rgba(255, 193, 7, 0.1) 9px -2px 6px 2px, rgba(250, 233, 183, 0.6) 5px 6px 5px -2px
 }

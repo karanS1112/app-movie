@@ -34,24 +34,23 @@ const Banner = () => {
     },
   ];
   return (
-    <div className="banner-container">
-      <Slider {...settings}>
-        {
-        banners.map((banner, index) => (
-          <div key={index} className="banner-slide">
-            <img
-              src={banner.image}
-              alt={banner.title}
-              className="banner-image"
-            />
-            <div className="banner-content">
-              {/* <h2>{banner.title}</h2>
+      <div className="banner-container">
+        <Slider {...settings}>
+          {banners.map((banner, index) => (
+            <div key={index} className="banner-slide">
+              <img
+                src={banner.image}
+                alt={banner.title}
+                className="banner-image"
+              />
+              <div className="banner-content">
+                {/* <h2>{banner.title}</h2>
             <p>{banner.subtitle}</p> */}
+              </div>
             </div>
-          </div>
-        ))}
-      </Slider>
-    </div>
+          ))}
+        </Slider>
+      </div>
   );
 };
 

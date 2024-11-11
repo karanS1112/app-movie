@@ -21,11 +21,11 @@ const Home = () => {
   return (
     <>
       <ScrollContainer>
-        <ScrollPage>
+        {/* <ScrollPage> */}
           {/* <Animator animation={MoveOut(-1000, 1000)}> */}
             <Banner />
           {/* </Animator> */}
-        </ScrollPage>
+        {/* </ScrollPage> */}
       </ScrollContainer>
 
       <MovieHeading />

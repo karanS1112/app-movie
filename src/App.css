@@ -29,7 +29,7 @@ body {
     height: 37rem;
 }
 
-.banner-content {
+/* .banner-content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -45,7 +45,7 @@ body {
 
 .banner-content p {
     font-size: 1.2em;
-}
+} */
 
 /* 404 page not found  */
 .position-relative {
@@ -130,7 +130,7 @@ body {
     width: 100%;
     margin: 1px auto;
     overflow: hidden;
-    padding: 20px;
+    padding: 4px auto;
     box-sizing: border-box;
 }
 
@@ -144,7 +144,7 @@ body {
 
 .banner-image {
     width: 100%;
-    height: 37rem;
+    height: 34rem !important;
     object-fit: cover;
 }
 
@@ -242,6 +242,8 @@ body {
     justify-content: center;
     padding-top: 10px;
     color: #000;
+    /* box-shadow: 0px 0px 19px rgb(8, 8, 8); */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 8px 6px, rgba(0, 0, 0, 0.23) 0px 8px 6px;
 }
 
 .home-rating-position {

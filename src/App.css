@@ -48,7 +48,7 @@ body {
 } */
 
 /* 404 page not found  */
-.position-relative {
+/* .position-relative {
     background-image: url('http://localhost:5173/images/page.jpg');
     background-size: cover;
     height: 40rem;
@@ -64,11 +64,10 @@ body {
 
 .text-center-loader {
     margin-left: 50%;
-}
+} */
 
 /* Home page  section  css */
-
-
+/* 
 .home-card-title {
     overflow: hidden;
     display: -webkit-box;
@@ -90,7 +89,6 @@ body {
 .slick-track {
     display: flex !important;
     gap: 5px !important;
-    /* Adjust as needed */
 }
 
 .home-movie-img-size {
@@ -120,12 +118,10 @@ body {
 
 .home-rating-position {
     position: absolute;
-}
-
-
-
+} */
 
 /* Banner.css */
+
 .banner-container {
     width: 100%;
     margin: 1px auto;
@@ -170,6 +166,7 @@ body {
 }
 
 /* 404 page not found  */
+
 .position-relative {
     background-image: url('http://localhost:5173/images/page.jpg');
     background-size: cover;
@@ -184,7 +181,7 @@ body {
     z-index: 9999;
     color: #fff;
     text-align: center;
-    padding-top: 20%;
+    /* padding-top: 10%; */
 }
 
 .text-center-loader {
@@ -192,7 +189,6 @@ body {
 }
 
 /* Home page  section  css */
-
 
 .home-card-title {
     overflow: hidden;
@@ -253,3 +249,7 @@ body {
 .shadow-card-box {
     box-shadow: rgba(255, 193, 7, 0.1) 9px -2px 6px 2px, rgba(250, 233, 183, 0.6) 5px 6px 5px -2px
 }
+
+/* single movie detail page css */
+
+

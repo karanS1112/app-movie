@@ -28,6 +28,7 @@ const MovieHeading = () => {
     try {
       await NowPlayingMovieDataApi().then((res) => {
         const nowPlayResponse = res.data.results;
+        console.log(nowPlayResponse)
         dispatch(setNowPlaying(nowPlayResponse));
         setTimeout(() => {
           setLoading(false);

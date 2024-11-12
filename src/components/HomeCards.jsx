@@ -54,17 +54,27 @@ const HomeCards = ({ movieData, loading }) => {
                 // style={{ width: "17rem" }}
               >
                 <img
-                  src={imageUri + data.poster_path}
+                  src={
+                    data.poster_path
+                      ? `${imageUri}${data.poster_path}`
+                      : "./images/404-img.jpg"
+                  }
                   className="card-img-top home-movie-img-size"
-                  alt="..."
+                  alt={
+                    data.poster_path ? "Movie poster" : "Image not available"
+                  }
                 />
                 <div className="card-body">
                   <Link
                     style={{ textDecorationColor: "transparent" }}
                     to={`/movie/${data.id}`}
                   >
-                    <h5 className="home-card-title">{data.original_title}</h5>
-                    <p className="home-card-description">{data.overview}</p>
+                    <h5 className="home-card-title">
+                      {data.original_title ? data.original_title : "N/A"}
+                    </h5>
+                    <p className="home-card-description">
+                      {data.overview ? data.overview : "N/A"}
+                    </p>
                   </Link>
                   <div className="home-rating-position">
                     <span className="home-movie-rating">

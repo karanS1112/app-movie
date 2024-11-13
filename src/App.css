@@ -226,7 +226,7 @@ body {
     height: 40px;
     width: 38px;
     padding: 4px;
-    background-color: rgba(255, 193, 7);
+    background-color: #ffc107;
     border-radius: 50%;
     z-index: 1;
     font-size: 12px;
@@ -252,4 +252,6 @@ body {
 
 /* single movie detail page css */
 
-
+.detail-icon-color{
+ color: #ffc107;   
+}

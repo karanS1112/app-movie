@@ -74,7 +74,6 @@ const MovieDetail = () => {
             </div>
             <div className="col-md-9">
               <h1 className="pt-3">
-                {" "}
                 {item.title ? `${item.title} (${year})` : "N/A"}
               </h1>
               {item.genres?.length > 0 ? (

@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import CardList from "./CardList";
 
 const NowPlaying = () => {
   return (
-    <div>NowPlaying</div>
-  )
-}
+    <>
+    <CardList/>
+    </>
+   
+  );
+};
 
-export default NowPlaying
+export default NowPlaying;

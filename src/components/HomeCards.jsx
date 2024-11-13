@@ -13,7 +13,7 @@ const HomeCards = ({ movieData, loading }) => {
     slidesToShow: 4,
     slidesToScroll: 4,
     centerPadding: 30,
-    slidesToShow: 5,
+    slidesToShow: 4,
     speed: 500,
     margin: 20,
     responsive: [
@@ -37,15 +37,15 @@ const HomeCards = ({ movieData, loading }) => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
+          slidesToShow: 2,
+          slidesToScroll: 2,
         },
       },
     ],
   };
   return (
     <div className="container-fluid">
-      <div className="slider-container home-card-slider ">
+      <div className="slider-container home-card-slider m-2">
         <Slider {...settings}>
           {movieData?.map((data, index) => (
             <div key={data.id} className="home-cards-wrap slick-track">

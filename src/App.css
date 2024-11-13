@@ -212,13 +212,12 @@ body {
 .slick-track {
     display: flex !important;
     gap: 10px;
-    /* Adjust as needed */
 }
 
 .home-movie-img-size {
     height: 38vh;
     width: 45vh;
-    object-fit: cover;
+    /* object-fit: cover; */
 }
 
 .home-movie-rating {
@@ -233,12 +232,11 @@ body {
     font-weight: 600;
     position: relative;
     bottom: 130px;
-    left: 170px;
+    left: 215px;
     text-align: center;
     justify-content: center;
     padding-top: 10px;
     color: #000;
-    /* box-shadow: 0px 0px 19px rgb(8, 8, 8); */
     box-shadow: rgba(0, 0, 0, 0.16) 0px 8px 6px, rgba(0, 0, 0, 0.23) 0px 8px 6px;
 }
 

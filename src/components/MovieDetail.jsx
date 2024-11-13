@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { dataMovie } from "../api/movieApiList";
 import { setMovieDetail } from "../store/reducer/movieReducer";
@@ -9,8 +9,10 @@ import { LuCalendarDays } from "react-icons/lu";
 import { BiSolidCameraMovie } from "react-icons/bi";
 import { GiMoneyStack } from "react-icons/gi";
 import { FaRegStar } from "react-icons/fa";
+import { MutatingDots } from "react-loader-spinner";
 const MovieDetail = () => {
   const param = useParams();
+  const [loading, setLoading] = useState(true);
   const id = param.id;
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
@@ -34,7 +36,10 @@ const MovieDetail = () => {
   const release = date + "/" + month + "/" + year;
 
   const movieDetailStyle = {
-    backgroundImage: `url("${backgroundImage}")`,
+    backgroundImage: `linear-gradient(rgba(234, 247, 64, 0.2), rgba(157, 18, 151, 0.2)), url("${backgroundImage}")`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    minHeight: "100vh",
   };
 
   useEffect(() => {
@@ -46,6 +51,9 @@ const MovieDetail = () => {
       .then((res) => {
         const movieDetailResponse = res.data;
         dispatch(setMovieDetail(movieDetailResponse));
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000);
       })
       .catch((error) => {
         console.log(error);
@@ -54,117 +62,141 @@ const MovieDetail = () => {
 
   return (
     <div className="fluid-container">
-      <div className="movieDetail" style={movieDetailStyle}>
+      {loading ? (
         <div className="container">
-          <div className="row">
-            <div className="col-md-3">
-              <div className="card shadow-card-box detail-card-poster  m-4">
-                <img
-                  src={
-                    selector.movieSlice.movieDetail.backdrop_path
-                      ? `${imageUri}${item.backdrop_path}`
-                      : "./images/404-img.jpg"
-                  }
-                  className="card-img-top detail-movie-img-size"
-                  alt={
-                    item.backdrop_path ? "Movie poster" : "Image not available"
-                  }
-                />
-              </div>
-            </div>
-            <div className="col-md-9">
-              <h1 className="pt-3">
-                {item.title ? `${item.title} (${year})` : "N/A"}
-              </h1>
-              {item.genres?.length > 0 ? (
-                <p>
-                  {item.genres.map((data) => data.name).join(", ")} ({" "}
-                  {item.tagline} )
-                </p>
-              ) : (
-                <p>N/A</p>
-              )}
-              <div className="row">
-                <div className="col-auto detail-icon-color">
-                  <FiWatch size={20} />
-                </div>
-                <div className="col p-0 pt-1">
-                  <h6>
-                    {" "}
-                    {formattedRuntime ? formattedRuntime : "N/A"} (
-                    {item?.runtime ? `${item.runtime} Minutes` : "N/A"})
-                  </h6>
+          <MutatingDots
+            visible={true}
+            height="100"
+            width="100"
+            color="#fd7e14"
+            secondaryColor="#ffc107"
+            radius="12.5"
+            ariaLabel="mutating-dots-loading"
+            wrapperStyle={{}}
+            wrapperClass="text-center-loader"
+          />
+        </div>
+      ) : (
+        <div className="movieDetail" style={movieDetailStyle}>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-3">
+                <div className="card shadow-card-box detail-card-poster  m-4">
+                  <img
+                    src={
+                      selector.movieSlice.movieDetail.backdrop_path
+                        ? `${imageUri}${item.backdrop_path}`
+                        : "./images/404-img.jpg"
+                    }
+                    className="card-img-top detail-movie-img-size"
+                    alt={
+                      item.backdrop_path
+                        ? "Movie poster"
+                        : "Image not available"
+                    }
+                  />
                 </div>
               </div>
-              <div className="row">
-                <div className="col-auto detail-icon-color">
-                  <TfiMoney size={20} />
-                </div>
-                <div className="col p-0 pt-1">
-                  <h6>{budget ? budget : "N/A"} (Budget)</h6>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-auto detail-icon-color">
-                  <GiMoneyStack size={20} />
-                </div>
-                <div className="col p-0 pt-1">
-                  <h6>{revenue ? revenue : "N/A"} (Revenue)</h6>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-auto detail-icon-color">
-                  <LuCalendarDays size={20} />
-                </div>
-                <div className="col-1 p-0 pt-1">
-                  <h6>{release} </h6>
-                </div>
-                <div className="col pt-1">
-                  {" "}
-                  {item.genres?.length > 0 ? (
+              <div className="col-md-9">
+                <h1 className="pt-3">
+                  {item.title ? `${item.title} (${year})` : "N/A"}
+                </h1>
+                {item.genres?.length > 0 ? (
+                  <p>
+                    {item.genres.map((data) => data.name).join(", ")} ({" "}
+                    {item.tagline} )
+                  </p>
+                ) : (
+                  <p>N/A</p>
+                )}
+                <div className="row">
+                  <div className="col-auto detail-icon-color">
+                    <FiWatch size={20} />
+                  </div>
+                  <div className="col p-0 pt-1">
                     <h6>
-                      ({item.origin_country.map((data) => data).join(", ")}){" "}
+                      {" "}
+                      {formattedRuntime ? formattedRuntime : "N/A"} (
+                      {item?.runtime ? `${item.runtime} Minutes` : "N/A"})
                     </h6>
-                  ) : (
-                    <p>N/A</p>
-                  )}
+                  </div>
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-auto detail-icon-color">
-                  <BiSolidCameraMovie />
+                <div className="row">
+                  <div className="col-auto detail-icon-color">
+                    <TfiMoney size={20} />
+                  </div>
+                  <div className="col p-0 pt-1">
+                    <h6>{budget ? budget : "N/A"} (Budget)</h6>
+                  </div>
                 </div>
-                <div className="col p-0 pt-1">
-                  <h6>{item.status}</h6>
+                <div className="row">
+                  <div className="col-auto detail-icon-color">
+                    <GiMoneyStack size={20} />
+                  </div>
+                  <div className="col p-0 pt-1">
+                    <h6>{revenue ? revenue : "N/A"} (Revenue)</h6>
+                  </div>
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-auto detail-icon-color">
-                  <FaRegStar />
+                <div className="row">
+                  <div className="col-auto detail-icon-color">
+                    <LuCalendarDays size={20} />
+                  </div>
+                  <div className="col-1 p-0 pt-1">
+                    <h6>{release} </h6>
+                  </div>
+                  <div className="col pt-1">
+                    {" "}
+                    {item.genres?.length > 0 ? (
+                      <h6>
+                        ({item.origin_country.map((data) => data).join(", ")}){" "}
+                      </h6>
+                    ) : (
+                      <p>N/A</p>
+                    )}
+                  </div>
                 </div>
-                <div className="col p-0 pt-1">
-                  <h6>
-                    {item?.vote_average ? item.vote_average.toFixed(1) : "N/A"}
-                  </h6>
+                <div className="row">
+                  <div className="col-auto detail-icon-color">
+                    <BiSolidCameraMovie />
+                  </div>
+                  <div className="col p-0 pt-1">
+                    <h6>{item.status}</h6>
+                  </div>
                 </div>
-              </div>
-              <div className="card p-0 m-4 detail-card-overview">
-                <div className="card-body">
-                  <h3 className="text-white text-truncate"> Overview</h3>
-                  <p className="text-white">{item.overview}</p>
+                <div className="row">
+                  <div className="col-auto detail-icon-color">
+                    <FaRegStar />
+                  </div>
+                  <div className="col p-0 pt-1">
+                    <h6>
+                      {item?.vote_average
+                        ? item.vote_average.toFixed(1)
+                        : "N/A"}
+                    </h6>
+                  </div>
                 </div>
-              </div>
+                <div className="card p-0 m-4 detail-card-overview">
+                  <div className="card-body">
+                    <h3 className="text-white text-truncate"> Overview</h3>
+                    <p className="text-white">{item.overview}</p>
+                  </div>
+                </div>
 
-              {/* <div className="">
+                {/* <div className="">
                 <span className="">
                   {item.vote_average
                     ? `${(item.vote_average * 10).toFixed(0)}%`
                     : "N/A"}
                 </span>
               </div> */}
+              </div>
             </div>
           </div>
         </div>
+      )}
+
+      <div className="container">
+        <h1> Cast & Crew</h1>
       </div>
     </div>
   );

@@ -3,61 +3,70 @@ import SectionHeading from "./SectionHeading";
 import HomeCards from "./HomeCards";
 // import { formatMovieList, movieLists } from "./Home/feature";
 import { useDispatch, useSelector } from "react-redux";
-import { setNowPlaying, setUpcoming } from "../store/reducer/movieReducer";
+import {
+  setNowPlaying,
+  setPopular,
+  setTopRated,
+  setUpcoming,
+} from "../store/reducer/movieReducer";
 import { MutatingDots } from "react-loader-spinner";
 import toast from "react-hot-toast";
+import { fetchMovieData } from "../commonFunction/movieApiFunction";
 import {
   NowPlayingMovieDataApi,
   topRatedMovieDataApi,
   upcomingMovieDataApi,
+  popularMovieDataApi,
 } from "../api/movieApiList";
 const MovieHeading = () => {
   const dispatch = useDispatch();
-  // const [loading, setLoading] = useState(true);
   const selector = useSelector((state) => state);
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getNowPlayingMovieData();
+    fetchMovieData(NowPlayingMovieDataApi, dispatch, setNowPlaying, setLoading);
+    fetchMovieData(NowPlayingMovieDataApi, dispatch, setUpcoming, setLoading);
+    fetchMovieData(topRatedMovieDataApi, dispatch, setTopRated, setLoading);
+    fetchMovieData(popularMovieDataApi, dispatch, setPopular, setLoading);
+    
+    // getNowPlayingMovieData();
     // getTopRatedMovieData();
-    getUpComingMovieData();
+    // getUpComingMovieData();
   }, []);
 
-  const getNowPlayingMovieData = async () => {
-    try {
-      await NowPlayingMovieDataApi().then((res) => {
-        const nowPlayResponse = res.data.results;
-        console.log(nowPlayResponse)
-        dispatch(setNowPlaying(nowPlayResponse));
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
-      });
-    } catch (error) {
-      toast.error("Please check your internet connection");
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const getNowPlayingMovieData = async () => {
+  //   try {
+  //     await NowPlayingMovieDataApi().then((res) => {
+  //       const nowPlayResponse = res.data.results;
+  //       dispatch(setNowPlaying(nowPlayResponse));
+  //       setTimeout(() => {
+  //         setLoading(false);
+  //       }, 1000);
+  //     });
+  //   } catch (error) {
+  //     toast.error("Please check your internet connection");
+  //     console.log(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
-  const getUpComingMovieData = async () => {
-    try {
-      await upcomingMovieDataApi().then((res) => {
-        const upComingResponse = res.data.results;
-        dispatch(setUpcoming(upComingResponse));
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
-      });
-    } catch (error) {
-      toast.error("Please check your internet connection");
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const getUpComingMovieData = async () => {
+  //   try {
+  //     await upcomingMovieDataApi().then((res) => {
+  //       const upComingResponse = res.data.results;
+  //       dispatch(setUpcoming(upComingResponse));
+  //       setTimeout(() => {
+  //         setLoading(false);
+  //       }, 1000);
+  //     });
+  //   } catch (error) {
+  //     toast.error("Please check your internet connection");
+  //     console.log(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   const titleData = [
     {
@@ -68,14 +77,14 @@ const MovieHeading = () => {
       title: "Up Comming",
       data: selector?.movieSlice?.upcoming,
     },
-    // {
-    //   title: "Top Rated",
-    //   data: movieLists.topRatedMovieList,
-    // },
-    // {
-    //   title: "Popular",
-    //   data: movieLists.popularMovieList,
-    // },
+    {
+      title: "Top Rated",
+      data: selector?.movieSlice?.topRated,
+    },
+    {
+      title: "Popular",
+      data: selector?.movieSlice?.popular,
+    },
   ];
   return (
     <div className="container">
@@ -99,7 +108,11 @@ const MovieHeading = () => {
             {titleData.map((data, index) => (
               <div key={index}>
                 <SectionHeading title={data.title} />
-                <HomeCards key={data.id} movieData={data?.data} loading={loading} />
+                <HomeCards
+                  key={data.id}
+                  movieData={data?.data}
+                  loading={loading}
+                />
               </div>
             ))}
           </div>

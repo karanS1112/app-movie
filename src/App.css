@@ -255,3 +255,6 @@ body {
 .detail-icon-color{
  color: #ffc107;   
 }
+.detail-card-overview{
+    background-color: #000000a6 !important;
+}

@@ -20,10 +20,10 @@ const MovieDetail = () => {
   const backgroundImage = orginalImgPoster + item.poster_path;
 
   const runtimeInMinutes = item.runtime;
-
   const hours = Math.floor(runtimeInMinutes / 60);
   const minutes = runtimeInMinutes % 60;
   const formattedRuntime = `${hours}h ${minutes}m`;
+
   const budget = (Math.abs(Number(item.budget)) / 1.0e6).toFixed(1) + " M";
   const revenue = (Math.abs(Number(item.revenue)) / 1.0e6).toFixed(1) + " M";
 
@@ -45,7 +45,6 @@ const MovieDetail = () => {
     await dataMovie(id)
       .then((res) => {
         const movieDetailResponse = res.data;
-        console.log("movieDetailResponse ", movieDetailResponse);
         dispatch(setMovieDetail(movieDetailResponse));
       })
       .catch((error) => {
@@ -148,6 +147,12 @@ const MovieDetail = () => {
                   <h6>
                     {item?.vote_average ? item.vote_average.toFixed(1) : "N/A"}
                   </h6>
+                </div>
+              </div>
+              <div className="card p-0 m-4 detail-card-overview">
+                <div className="card-body">
+                  <h3 className="text-white text-truncate"> Overview</h3>
+                  <p className="text-white">{item.overview}</p>
                 </div>
               </div>
 

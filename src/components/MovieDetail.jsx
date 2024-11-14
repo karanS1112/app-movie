@@ -61,7 +61,7 @@ const MovieDetail = () => {
   };
 
   return (
-    <div className="fluid-container">
+    <div className="fluid-container min-vh-100">
       {loading ? (
         <div className="container">
           <MutatingDots
@@ -195,8 +195,8 @@ const MovieDetail = () => {
         </div>
       )}
 
-      <div className="container">
-        <h1> Cast & Crew</h1>
+      <div className="container  ">
+        <h4> Cast & Crew</h4>
       </div>
     </div>
   );

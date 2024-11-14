@@ -57,9 +57,9 @@ function App() {
   ]);
 
   return (
-    <>
+    <div className="main min-vh-100">
       <RouterProvider router={router} />
-    </>
+    </div>
   );
 }
 

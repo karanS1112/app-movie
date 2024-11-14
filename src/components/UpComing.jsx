@@ -1,8 +1,12 @@
 import React from 'react'
+import CardList from './CardList'
 
 const UpComing = () => {
+    const title = "Up Comming"
   return (
-    <div>UpComing</div>
+    <>
+    <CardList category={title}/>
+    </>
   )
 }
 

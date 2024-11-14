@@ -25,10 +25,10 @@ const MovieHeading = () => {
 
   useEffect(() => {
     fetchMovieData(NowPlayingMovieDataApi, dispatch, setNowPlaying, setLoading);
-    fetchMovieData(NowPlayingMovieDataApi, dispatch, setUpcoming, setLoading);
+    fetchMovieData(upcomingMovieDataApi, dispatch, setUpcoming, setLoading);
     fetchMovieData(topRatedMovieDataApi, dispatch, setTopRated, setLoading);
     fetchMovieData(popularMovieDataApi, dispatch, setPopular, setLoading);
-    
+
     // getNowPlayingMovieData();
     // getTopRatedMovieData();
     // getUpComingMovieData();

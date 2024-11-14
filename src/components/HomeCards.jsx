@@ -44,7 +44,7 @@ const HomeCards = ({ movieData, loading }) => {
     ],
   };
   return (
-    <div className="container-fluid">
+    <div className="container-fluid min-vh-50">
       <div className="slider-container home-card-slider m-2">
         <Slider {...settings}>
           {movieData?.map((data, index) => (

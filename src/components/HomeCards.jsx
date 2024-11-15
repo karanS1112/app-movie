@@ -13,7 +13,6 @@ const HomeCards = ({ movieData, loading }) => {
     slidesToShow: 4,
     slidesToScroll: 4,
     centerPadding: 30,
-    slidesToShow: 4,
     speed: 500,
     margin: 20,
     responsive: [

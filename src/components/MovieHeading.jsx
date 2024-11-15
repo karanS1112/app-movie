@@ -18,6 +18,7 @@ import {
   upcomingMovieDataApi,
   popularMovieDataApi,
 } from "../api/movieApiList";
+
 const MovieHeading = () => {
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
@@ -28,10 +29,6 @@ const MovieHeading = () => {
     fetchMovieData(upcomingMovieDataApi, dispatch, setUpcoming, setLoading);
     fetchMovieData(topRatedMovieDataApi, dispatch, setTopRated, setLoading);
     fetchMovieData(popularMovieDataApi, dispatch, setPopular, setLoading);
-
-    // getNowPlayingMovieData();
-    // getTopRatedMovieData();
-    // getUpComingMovieData();
   }, []);
 
   // const getNowPlayingMovieData = async () => {
@@ -110,7 +107,7 @@ const MovieHeading = () => {
                 <SectionHeading title={data.title} />
                 <HomeCards
                   key={data.id}
-                  movieData={data?.data}
+                  movieData={data?.data?.results}
                   loading={loading}
                 />
               </div>

@@ -2,7 +2,7 @@ export const fetchMovieData = async (apiFunction, dispatch, action, setLoading) 
   try {
     setLoading(true);
     const response = await apiFunction();
-    const data = response.data.results;
+    const data = response.data;
     dispatch(action(data));
     setTimeout(() => {
       setLoading(false);

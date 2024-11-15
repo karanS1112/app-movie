@@ -3,33 +3,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchMovieData } from "../commonFunction/movieApiFunction";
 import {
   NowPlayingMovieDataApi,
+  topRatedMovieDataApi,
   upcomingMovieDataApi,
 } from "../api/movieApiList";
-import { setNowPlaying, setUpcoming } from "../store/reducer/movieReducer";
+import {
+  setNowPlaying,
+  setTopRated,
+  setUpcoming,
+} from "../store/reducer/movieReducer";
 import { MutatingDots } from "react-loader-spinner";
 
 const CardList = ({ category }) => {
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1)
   const titleCategory = category;
-  // const nowMovieData = fetchMovieData(
-  //   NowPlayingMovieDataApi,
-  //   dispatch,
-  //   setNowPlaying,
-  //   setLoading
-  // );
+  const imageUri = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";
+
   useEffect(() => {
-    const nowMovieData = fetchMovieData(
-      NowPlayingMovieDataApi,
-      dispatch,
-      setNowPlaying,
-      setLoading
-    );
+    fetchMovieData(NowPlayingMovieDataApi, dispatch, setNowPlaying, setLoading);
     fetchMovieData(upcomingMovieDataApi, dispatch, setUpcoming, setLoading);
-    // console.log(nowMovieData)
+    fetchMovieData(topRatedMovieDataApi, dispatch, setTopRated, setLoading);
   }, []);
-  //   console.log(nowMovieData)
   const titleData = [
     {
       title: "Now Playing",
@@ -39,10 +35,12 @@ const CardList = ({ category }) => {
       title: "Up Comming",
       data: selector?.movieSlice?.upcoming,
     },
+    {
+      title: "Top Rated",
+      data: selector?.movieSlice?.topRated,
+    },
   ];
-  console.log(titleData);
-  const nowPlayingData = titleData[0].data;
-  const upComingData = titleData[1].data;
+  // console.log(titleData,"titledata");
 
   return (
     <div className="container min-vh-100 p-0 mt-4 mb-4">
@@ -63,24 +61,35 @@ const CardList = ({ category }) => {
       ) : (
         <>
           <div className="row">
-            {titleData.map((category, categoryIndex) => (
-              <div key={categoryIndex} className="col-sm-3 p-2">
-                <div className="card">
-                  <div className="card-body">
-                    <h6 className="card-title">{category.title}</h6>
-                    <ul className="list-group list-group-flush">
-                      {category.data.map((movie, movieIndex) =>
-                        category == titleCategory ? (
-                          <li key={movieIndex} className="list-group-item">
-                            {movie.title} (ID: {movie.id})
-                          </li>
-                        ) : null
-                      )}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            ))}
+            {titleData.map((category, categoryIndex) =>
+              category.title == titleCategory
+                ? category.data.results.map((result, resultIndex) => (
+                    <div key={resultIndex} className="col-sm-3 p-2">
+                      <div className="card">
+                        <div className="card-body">
+                          <img
+                            src={
+                              result.poster_path
+                                ? `${imageUri}${result.poster_path}`
+                                : "./images/404-img.jpg"
+                            }
+                            className="card-img-top home-movie-img-size"
+                            alt={
+                              result.poster_path
+                                ? "Movie poster"
+                                : "Image not available"
+                            }
+                          />
+                          <h6 className="card-title">{result.title}</h6>
+                          <ul className="list-group list-group-flush">
+                            <li className="list-group-item"></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                : null
+            )}
           </div>
         </>
       )}

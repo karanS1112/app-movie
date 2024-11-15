@@ -1,8 +1,13 @@
 import React from 'react'
+import CardList from './CardList'
 
 const TopRated = () => {
-  return (
-    <div>TopRated</div>
+  const title = "Top Rated"
+    return (
+      <>
+      <CardList category={title}/>
+      </>
+     
   )
 }
 

@@ -46,7 +46,7 @@ const HomeCards = ({ movieData, loading }) => {
     <div className="container-fluid min-vh-50">
       <div className="slider-container home-card-slider m-2">
         <Slider {...settings}>
-          {movieData?.map((data, index) => (
+          { movieData ? movieData?.map((data, index) => (
             <div key={data.id} className="home-cards-wrap slick-track">
               <div
                 className="card text-white bg-white mb-3 shadow-card-box "
@@ -85,7 +85,8 @@ const HomeCards = ({ movieData, loading }) => {
                 </div>
               </div>
             </div>
-          ))}
+          )):
+          <h6>No data found</h6>}
         </Slider>
       </div>
     </div>

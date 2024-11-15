@@ -2,10 +2,10 @@ import axios from "axios";
 import React from "react";
 const baseUrl = "https://api.themoviedb.org/3/movie/";
 
-export const NowPlayingMovieDataApi = async () => {
+export const NowPlayingMovieDataApi = async (currentPage) => {
   const response = await axios({
     method: "GET",
-    url: `${baseUrl}now_playing?api_key=36dec023f16d2531d7df1a52eb67943f&language=en-US`,
+    url: `${baseUrl}now_playing?api_key=36dec023f16d2531d7df1a52eb67943f&language=en-US&page=${currentPage}`,
   });
 
   return response;

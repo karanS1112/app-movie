@@ -1,12 +1,11 @@
-export const fetchMovieData = async (apiFunction, dispatch, action, setLoading,currentPage,setTotalPage) => {
+export const fetchMovieData = async (apiFunction, dispatch, action, setLoading,currentPage,setTotalPage, previousResults=[]) => {
   try {
     setLoading(true);
-    console.log(currentPage,"common function");
     const response = await apiFunction(currentPage);
     const data = response.data;
     const totalPages = response.data.total_pages;
     setTotalPage(totalPages)
-    dispatch(action(data));
+    dispatch(action({...data,results: [...previousResults, ...data.results]}));
     setTimeout(() => {
       setLoading(false);
     }, 1000);

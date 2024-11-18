@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  nowPlaying: [],
+  nowPlaying: {},
   upcoming: [],
   topRated: [],
   popular: [],
@@ -13,7 +13,8 @@ const movieSlice = createSlice({
   initialState: initialState,
   reducers: {
     setNowPlaying(state, action) {
-      return { ...state, nowPlaying: action.payload };
+      // console.log("action", action.payload)
+      return { ...state, nowPlaying: action.payload};
     },
     setUpcoming(state, action) {
       //This line returns a new state object, which is an updated version of the current state.

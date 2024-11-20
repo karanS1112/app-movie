@@ -36,7 +36,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                to="/nowplaying"
+                to="/movie/now-playing"
                 className={(e) =>
                   e.isActive
                     ? "nav-link px-2 text-warning active"
@@ -48,7 +48,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                to="/upcoming"
+                to="/movie/up-coming"
                 className={(e) =>
                   e.isActive
                     ? "nav-link px-2 text-warning active"
@@ -60,7 +60,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                to="/toprated"
+                to="/movie/top-rated"
                 className={(e) =>
                   e.isActive
                     ? "nav-link px-2 text-warning active"
@@ -73,7 +73,7 @@ const Header = () => {
 
             <li>
               <NavLink
-                to="/popular"
+                to="/movie/popular"
                 className={(e) =>
                   e.isActive
                     ? "nav-link px-2 text-warning active"

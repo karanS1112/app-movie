@@ -36,7 +36,7 @@ const MovieDetail = () => {
   const release = date + "/" + month + "/" + year;
 
   const movieDetailStyle = {
-    backgroundImage: `linear-gradient(rgba(234, 247, 64, 0.2), rgba(157, 18, 151, 0.2)), url("${backgroundImage}")`,
+    backgroundImage: `linear-gradient(rgba(0 0 0 / 79%), rgba(157, 18, 151, 0.2)), url("${backgroundImage}")`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     minHeight: "100vh",
@@ -103,8 +103,7 @@ const MovieDetail = () => {
                 </h1>
                 {item.genres?.length > 0 ? (
                   <p>
-                    {item.genres.map((data) => data.name).join(", ")} ({" "}
-                    {item.tagline} )
+                    {item.genres.map((data) => data.name?data.name:"N/A").join(", ")} ({item.tagline?item.tagline:"N/A"})
                   </p>
                 ) : (
                   <p>N/A</p>
@@ -147,7 +146,7 @@ const MovieDetail = () => {
                   <div className="col pt-1">
                     {" "}
                     {item.genres?.length > 0 ? (
-                      <h6>
+                      <h6 className="ps-3">
                         ({item.origin_country.map((data) => data).join(", ")}){" "}
                       </h6>
                     ) : (

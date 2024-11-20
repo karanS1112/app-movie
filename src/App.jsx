@@ -25,19 +25,19 @@ function App() {
           element: <Home />,
         },
         {
-          path: "/nowplaying",
+          path: "/movie/now-playing",
           element: <NowPlaying />,
         },
         {
-          path: "/upcoming",
+          path: "/movie/up-coming",
           element: <UpComing />,
         },
         {
-          path: "/toprated",
+          path: "/movie/top-rated",
           element: <TopRated />,
         },
         {
-          path: "/popular",
+          path: "/movie/popular",
           element: <Popular />,
         },
         {

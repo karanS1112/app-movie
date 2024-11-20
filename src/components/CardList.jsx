@@ -15,12 +15,13 @@ import {
 } from "../store/reducer/movieReducer";
 import { MutatingDots } from "react-loader-spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { ReducerType } from "@reduxjs/toolkit";
 
 const CardList = ({ category }) => {
+  let { pathname } = useLocation();
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
-  // console.log("selector", selector)
   const [loading, setLoading] = useState(true);
   const [totalPage, setTotalPage] = useState();
   const [currentPage, setCurrentPage] = useState(1);
@@ -29,43 +30,53 @@ const CardList = ({ category }) => {
   const imageUri = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";
 
   useEffect(() => {
-    fetchMovieData(
-      NowPlayingMovieDataApi,
-      dispatch,
-      setNowPlaying,
-      setLoading,
-      currentPage,
-      setTotalPage,
-      selector?.movieSlice?.nowPlaying.results
-    );
-    fetchMovieData(
-      upcomingMovieDataApi,
-      dispatch,
-      setUpcoming,
-      setLoading,
-      currentPage,
-      setTotalPage,
-      selector?.movieSlice?.upcoming.results
-    );
-    fetchMovieData(
-      topRatedMovieDataApi,
-      dispatch,
-      setTopRated,
-      setLoading,
-      currentPage,
-      setTotalPage,
-      selector?.movieSlice?.topRated.results
-    );
-    fetchMovieData(
-      popularMovieDataApi,
-      dispatch,
-      setPopular,
-      setLoading,
-      currentPage,
-      setTotalPage,
-      selector?.movieSlice?.popular.results
-    );
+    if (pathname === "/movie/now-playing") {
+      fetchMovieData(
+        NowPlayingMovieDataApi,
+        dispatch,
+        setNowPlaying,
+        setLoading,
+        currentPage,
+        setTotalPage,
+        selector?.movieSlice?.nowPlaying.results
+      );
+    }
+    if (pathname === "/movie/up-coming") {
+      fetchMovieData(
+        upcomingMovieDataApi,
+        dispatch,
+        setUpcoming,
+        setLoading,
+        currentPage,
+        setTotalPage,
+        selector?.movieSlice?.upcoming.results
+      );
+    }
+    if (pathname === "/movie/top-rated") {
+      fetchMovieData(
+        topRatedMovieDataApi,
+        dispatch,
+        setTopRated,
+        setLoading,
+        currentPage,
+        setTotalPage,
+        selector?.movieSlice?.topRated.results
+      );
+    }
+    if (pathname === "/movie/popular") {
+      fetchMovieData(
+        popularMovieDataApi,
+        dispatch,
+        setPopular,
+        setLoading,
+        currentPage,
+        setTotalPage,
+        selector?.movieSlice?.popular.results
+      );
+    }
   }, [currentPage]);
+
+  
   const titleData = [
     {
       title: "Now Playing",
@@ -81,7 +92,7 @@ const CardList = ({ category }) => {
     },
     {
       title: "Popular",
-      data: selector?.movieSlice?.topRated,
+      data: selector?.movieSlice?.popular,
     },
   ];
   const loadMoreMovies = () => {
@@ -92,7 +103,7 @@ const CardList = ({ category }) => {
   const matchingCategory = titleData?.find(
     (category) => category.title === titleCategory
   );
-  console.log("currentPage", currentPage);
+
   return (
     <div className="container min-vh-100">
       {loading ? (
@@ -111,21 +122,21 @@ const CardList = ({ category }) => {
         </div>
       ) : (
         <InfiniteScroll
-          dataLength={matchingCategory.data.results.length}
+          dataLength={matchingCategory?.data?.results?.length || 0}
           next={loadMoreMovies}
           hasMore={true}
-          scrollThreshold={1}
+          scrollThreshold={0.8}
           loader={
             <div className="text-center mt-3">
-              {/* <MutatingDots
-                            visible={true}
-                            height="80"
-                            width="80"
-                            color="#fd7e14"
-                            secondaryColor="#ffc107"
-                            radius="12.5"
-                            ariaLabel="mutating-dots-loading"
-                          /> */}
+              <MutatingDots
+                visible={true}
+                height="80"
+                width="80"
+                color="#fd7e14"
+                secondaryColor="#ffc107"
+                radius="12.5"
+                ariaLabel="mutating-dots-loading"
+              />
             </div>
           }
         >
@@ -144,14 +155,14 @@ const CardList = ({ category }) => {
                             ? `${imageUri}${movie.poster_path}`
                             : "./images/404-img.jpg"
                         }
-                        className="card-img-top home-movie-img-size"
+                        className="card-img-top card-list-movie-img-size"
                         alt={
                           movie.poster_path
                             ? "Movie poster"
                             : "Image not available"
                         }
                       />
-                      <div className="card-body">
+                      <div className="card-body text-center">
                         <h6 className="text-truncate text-black">
                           {movie.title}
                         </h6>
@@ -162,6 +173,13 @@ const CardList = ({ category }) => {
                               : "N/A"}
                           </span>
                         </div>
+                        <h6 className="text-truncate text-black-50">
+                          {new Intl.DateTimeFormat("en-GB", {
+                            day: "2-digit",
+                            month: "short",
+                            year: "numeric",
+                          }).format(new Date(movie.release_date))}
+                        </h6>
                       </div>
                     </Link>
                   </div>

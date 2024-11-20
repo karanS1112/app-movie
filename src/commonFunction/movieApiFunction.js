@@ -1,3 +1,5 @@
+import toast from "react-hot-toast";
+
 export const fetchMovieData = async (apiFunction, dispatch, action, setLoading,currentPage,setTotalPage, previousResults=[]) => {
   try {
     setLoading(true);
@@ -10,7 +12,7 @@ export const fetchMovieData = async (apiFunction, dispatch, action, setLoading,c
       setLoading(false);
     }, 1000);
   } catch (error) {
-    toast.error("Please check your internet connection");
+    toast.error("Data is not fetching");
     console.error(error);
   } finally {
     setLoading(false);

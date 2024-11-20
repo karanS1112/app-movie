@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import CardList from "./CardList";
 
 const Popular = () => {
+  const title = "Popular";
   return (
-    <div>Popular</div>
-  )
-}
+    <>
+      <CardList category={title} />
+    </>
+  );
+};
 
-export default Popular
+export default Popular;

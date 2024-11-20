@@ -23,47 +23,52 @@ const MovieHeading = () => {
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
   const [loading, setLoading] = useState(true);
+  const [totalPage, setTotalPage] = useState();
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    fetchMovieData(NowPlayingMovieDataApi, dispatch, setNowPlaying, setLoading);
-    fetchMovieData(upcomingMovieDataApi, dispatch, setUpcoming, setLoading);
-    fetchMovieData(topRatedMovieDataApi, dispatch, setTopRated, setLoading);
-    fetchMovieData(popularMovieDataApi, dispatch, setPopular, setLoading);
-  }, []);
-
-  // const getNowPlayingMovieData = async () => {
-  //   try {
-  //     await NowPlayingMovieDataApi().then((res) => {
-  //       const nowPlayResponse = res.data.results;
-  //       dispatch(setNowPlaying(nowPlayResponse));
-  //       setTimeout(() => {
-  //         setLoading(false);
-  //       }, 1000);
-  //     });
-  //   } catch (error) {
-  //     toast.error("Please check your internet connection");
-  //     console.log(error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  // const getUpComingMovieData = async () => {
-  //   try {
-  //     await upcomingMovieDataApi().then((res) => {
-  //       const upComingResponse = res.data.results;
-  //       dispatch(setUpcoming(upComingResponse));
-  //       setTimeout(() => {
-  //         setLoading(false);
-  //       }, 1000);
-  //     });
-  //   } catch (error) {
-  //     toast.error("Please check your internet connection");
-  //     console.log(error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+    fetchMovieData(
+      NowPlayingMovieDataApi,
+      dispatch,
+      setNowPlaying,
+      setLoading,
+      currentPage,
+      setTotalPage,
+      selector?.movieSlice?.nowPlaying.results
+    );
+    fetchMovieData(
+      upcomingMovieDataApi,
+      dispatch,
+      setUpcoming,
+      setLoading,
+      currentPage,
+      setTotalPage,
+      selector?.movieSlice?.upcoming.results
+    );
+    fetchMovieData(
+      topRatedMovieDataApi,
+      dispatch,
+      setTopRated,
+      setLoading,
+      currentPage,
+      setTotalPage,
+      selector?.movieSlice?.topRated.results
+    );
+    fetchMovieData(
+      popularMovieDataApi,
+      dispatch,
+      setPopular,
+      setLoading,
+      currentPage,
+      setTotalPage,
+      selector?.movieSlice?.popular.results
+    );
+  }, [currentPage]);
+  const loadMoreMovies = () => {
+    if (currentPage <= 3) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
 
   const titleData = [
     {
@@ -109,6 +114,7 @@ const MovieHeading = () => {
                   key={data.id}
                   movieData={data?.data?.results}
                   loading={loading}
+                  loadMoreMovies={loadMoreMovies}
                 />
               </div>
             ))}

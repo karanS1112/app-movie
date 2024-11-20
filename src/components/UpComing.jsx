@@ -1,13 +1,13 @@
-import React from 'react'
-import CardList from './CardList'
+import React from "react";
+import CardList from "./CardList";
 
 const UpComing = () => {
-    const title = "Up Comming"
+  const title = "Up Comming";
   return (
     <>
-    <CardList category={title}/>
+      <CardList category={title} />
     </>
-  )
-}
+  );
+};
 
-export default UpComing
+export default UpComing;

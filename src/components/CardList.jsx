@@ -12,6 +12,7 @@ import {
   setTopRated,
   setUpcoming,
   setPopular,
+  setResetState,
 } from "../store/reducer/movieReducer";
 import { MutatingDots } from "react-loader-spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -76,6 +77,11 @@ const CardList = ({ category }) => {
     }
   }, [currentPage]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    dispatch(setResetState);
+   
+  }, [pathname]);
   
   const titleData = [
     {
@@ -164,7 +170,7 @@ const CardList = ({ category }) => {
                       />
                       <div className="card-body text-center">
                         <h6 className="text-truncate text-black">
-                          {movie.title}
+                          {movie?.title ? movie.title : "N/A"}
                         </h6>
                         <div className="card-list-rating-position">
                           <span className="card-list-movie-rating">
@@ -174,11 +180,13 @@ const CardList = ({ category }) => {
                           </span>
                         </div>
                         <h6 className="text-truncate text-black-50">
-                          {new Intl.DateTimeFormat("en-GB", {
-                            day: "2-digit",
-                            month: "short",
-                            year: "numeric",
-                          }).format(new Date(movie.release_date))}
+                          {movie.release_date
+                            ? new Intl.DateTimeFormat("en-GB", {
+                                day: "2-digit",
+                                month: "short",
+                                year: "numeric",
+                              }).format(new Date(movie.release_date))
+                            : "N/A"}
                         </h6>
                       </div>
                     </Link>

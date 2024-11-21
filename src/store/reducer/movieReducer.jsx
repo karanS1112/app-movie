@@ -6,6 +6,7 @@ const initialState = {
   topRated: [],
   popular: [],
   movieDetail: [],
+  resetState:[]
 };
 
 const movieSlice = createSlice({
@@ -32,6 +33,9 @@ const movieSlice = createSlice({
     setMovieDetail(state, action) {
       return { ...state, movieDetail: action.payload };
     },
+    setResetState(state, action) {
+      return initialState;
+    },
   },
 });
 
@@ -41,5 +45,6 @@ export const {
   setTopRated,
   setPopular,
   setMovieDetail,
+  setResetState,
 } = movieSlice.actions;
 export default movieSlice.reducer;

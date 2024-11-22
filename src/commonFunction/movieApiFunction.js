@@ -17,3 +17,14 @@ export const fetchMovieData = async (apiFunction, dispatch, action, setLoading,c
     setLoading(false);
   }
 };
+
+export const fetchCastCrewData = async(castCrewMovie,setCastCrew,dispatch,id)=>{
+    try {
+      const res = await castCrewMovie(id);
+      const castCrewResponse = res.data;
+      // console.log(castCrewResponse,"castCrewResponse")
+      dispatch(setCastCrew(castCrewResponse));
+    } catch (error) {
+      console.error(error);
+    }
+}

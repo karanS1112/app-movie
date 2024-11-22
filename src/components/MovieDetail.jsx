@@ -62,19 +62,6 @@ const MovieDetail = () => {
       });
   };
 
-  // const castCrewData = useSelector((state) => state.movieSlice.castCrew);
-
-  // const getCastCrewData = async () => {
-  //   await castCrewMovie(id)
-  //     .then((res) => {
-  //       const castCrewResponse = res.data;
-  //       dispatch(setCastCrew(castCrewResponse));
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
-
   return (
     <div className="fluid-container min-vh-100">
       {loading ? (
@@ -198,21 +185,12 @@ const MovieDetail = () => {
                     <p className="text-white">{item.overview}</p>
                   </div>
                 </div>
-
-                {/* <div className="">
-                <span className="">
-                  {item.vote_average
-                    ? `${(item.vote_average * 10).toFixed(0)}%`
-                    : "N/A"}
-                </span>
-              </div> */}
               </div>
             </div>
           </div>
         </div>
       )}
-
-      <CastCrewSlickSlider/>
+      <CastCrewSlickSlider />
     </div>
   );
 };

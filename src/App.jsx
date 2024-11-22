@@ -10,6 +10,7 @@ import Popular from "./components/Popular";
 import About from "./components/About";
 import PageNotFound from "./components/PageNotFound";
 import MovieDetail from "./components/MovieDetail";
+import CastCrewList from "./components/CastCrewList";
 
 function App() {
   const router = createBrowserRouter([
@@ -47,6 +48,10 @@ function App() {
         {
           path: `/movie/:id`,
           element: <MovieDetail />,
+        },
+        {
+          path: `/movie/cast-crew`,
+          element: <CastCrewList />,
         },
         {
           path: "*",

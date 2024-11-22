@@ -3,35 +3,34 @@ import { useDispatch, useSelector } from "react-redux";
 import Slider from "react-slick";
 import { castCrewMovie } from "../api/movieApiList";
 import { setCastCrew } from "../store/reducer/movieReducer";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { fetchCastCrewData } from "../commonFunction/movieApiFunction";
 
 function CastCrewSlickSlider() {
-    const param = useParams();
-    const id = param.id;
+  const param = useParams();
+  const navigate = useNavigate();
+  const id = param.id;
   const castCrewData = useSelector((state) => state.movieSlice.castCrew);
   const imageUri = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";
-  useEffect(() => {
-    console.log("first")
-    getCastCrewData();
-  }, []);
   const dispatch = useDispatch();
-  const getCastCrewData = async () => {
-    await castCrewMovie(id)
-      .then((res) => {
-        const castCrewResponse = res.data;
-        dispatch(setCastCrew(castCrewResponse));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+
+  useEffect(() => {
+    fetchCastCrewData(castCrewMovie, setCastCrew, dispatch, id);
+  }, []);
+
+  const handleViewMoreClick = () => {
+    navigate(`/movie/cast-crew`);
   };
+
+  const displayedCastData = castCrewData?.cast
+    ? [...castCrewData.cast.slice(0, 14), { id: "view-more" }]
+    : [];
+
   var settings = {
     infinite: false,
     slidesToShow: 7,
     slidesToScroll: 1,
-    centerPadding: 30,
     speed: 500,
-    margin: 20,
     responsive: [
       {
         breakpoint: 1024,
@@ -59,12 +58,24 @@ function CastCrewSlickSlider() {
       },
     ],
   };
+
   return (
     <div className="container mt-3 mb-2">
       <h4>Cast & Crew</h4>
       <Slider {...settings}>
-        {castCrewData?.cast?.length > 0 && castCrewData?.cast?.length > 12 ? (
-          castCrewData.cast.map((castData) => (
+        {displayedCastData.map((castData) =>
+          castData.id === "view-more" ? (
+            <div
+              key="view-more"
+              className="card mb-2 view-more-card"
+              onClick={handleViewMoreClick}
+              style={{ cursor: "pointer", textAlign: "center" }}
+            >
+              <div className="card-body">
+                <h5 className="text-black">View More</h5>
+              </div>
+            </div>
+          ) : (
             <div key={castData.id} className="card mb-2">
               <img
                 src={
@@ -84,9 +95,7 @@ function CastCrewSlickSlider() {
                 </p>
               </div>
             </div>
-          ))
-        ) : (
-          <p>No cast information available.</p>
+          )
         )}
       </Slider>
     </div>

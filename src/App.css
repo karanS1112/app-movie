@@ -201,3 +201,10 @@ body {
     width: 100% !important;
     /* object-fit: cover; */
 }
+
+/* cast crew slick slider page  */
+.view-more-card {
+    height: 37vh !important;
+    text-align: center;
+    padding: 70px 0px 10px 5px;
+}

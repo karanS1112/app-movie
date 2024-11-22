@@ -7,12 +7,7 @@ import { Link } from "react-router-dom";
 const HomeCards = ({ movieData, loading, loadMoreMovies }) => {
   const imageUri = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";
   
-  useEffect(() => {
-    // loadMoreMovies();
-  });
   var settings = {
-    // className: "center",
-    // centerMode: true,
     infinite: false,
     slidesToShow: 4,
     slidesToScroll: 4,

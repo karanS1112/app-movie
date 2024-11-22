@@ -41,3 +41,11 @@ export const dataMovie = async (movieId) => {
   });
   return response;
 };
+export const castCrewMovie = async (movieId) => {
+  const response = await axios({
+      method: 'GET',
+      url: `${baseUrl}${movieId}/casts?api_key=36dec023f16d2531d7df1a52eb67943f`
+  })
+  return response;
+}
+

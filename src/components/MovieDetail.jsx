@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { dataMovie } from "../api/movieApiList";
-import { setMovieDetail } from "../store/reducer/movieReducer";
+import { castCrewMovie, dataMovie } from "../api/movieApiList";
+import { setCastCrew, setMovieDetail } from "../store/reducer/movieReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { FiWatch } from "react-icons/fi";
 import { TfiMoney } from "react-icons/tfi";
@@ -10,6 +10,8 @@ import { BiSolidCameraMovie } from "react-icons/bi";
 import { GiMoneyStack } from "react-icons/gi";
 import { FaRegStar } from "react-icons/fa";
 import { MutatingDots } from "react-loader-spinner";
+import Slider from "react-slick";
+import CastCrewSlickSlider from "./CastCrewSlickSlider";
 const MovieDetail = () => {
   const param = useParams();
   const [loading, setLoading] = useState(true);
@@ -34,7 +36,7 @@ const MovieDetail = () => {
   var month = release_date.getMonth();
   var date = release_date.getDate();
   const release = date + "/" + month + "/" + year;
-
+  // const imageUri = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";
   const movieDetailStyle = {
     backgroundImage: `linear-gradient(rgba(0 0 0 / 79%), rgba(157, 18, 151, 0.2)), url("${backgroundImage}")`,
     backgroundSize: "cover",
@@ -59,6 +61,19 @@ const MovieDetail = () => {
         console.log(error);
       });
   };
+
+  // const castCrewData = useSelector((state) => state.movieSlice.castCrew);
+
+  // const getCastCrewData = async () => {
+  //   await castCrewMovie(id)
+  //     .then((res) => {
+  //       const castCrewResponse = res.data;
+  //       dispatch(setCastCrew(castCrewResponse));
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
 
   return (
     <div className="fluid-container min-vh-100">
@@ -103,7 +118,10 @@ const MovieDetail = () => {
                 </h1>
                 {item.genres?.length > 0 ? (
                   <p>
-                    {item.genres.map((data) => data.name?data.name:"N/A").join(", ")} ({item.tagline?item.tagline:"N/A"})
+                    {item.genres
+                      .map((data) => (data.name ? data.name : "N/A"))
+                      .join(", ")}{" "}
+                    ({item.tagline ? item.tagline : "N/A"})
                   </p>
                 ) : (
                   <p>N/A</p>
@@ -194,9 +212,7 @@ const MovieDetail = () => {
         </div>
       )}
 
-      <div className="container  ">
-        <h4> Cast & Crew</h4>
-      </div>
+      <CastCrewSlickSlider/>
     </div>
   );
 };

@@ -193,3 +193,11 @@ body {
     height: 40vh;
     width: 100% !important;
 }
+
+/* movie details page  */
+
+.movie-cast-crew-img-size {
+    height: 20vh;
+    width: 100% !important;
+    /* object-fit: cover; */
+}

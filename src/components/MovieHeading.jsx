@@ -65,7 +65,7 @@ const MovieHeading = () => {
     );
   }, [currentPage]);
   const loadMoreMovies = () => {
-    if (currentPage <= 3) {
+    if (currentPage < 3) {
       setCurrentPage(currentPage + 1);
     }
   };

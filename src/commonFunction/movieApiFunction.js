@@ -2,7 +2,6 @@ import toast from "react-hot-toast";
 
 export const fetchMovieData = async (apiFunction, dispatch, action, setLoading,currentPage,setTotalPage, previousResults=[]) => {
   try {
-    setLoading(true);
     const response = await apiFunction(currentPage);
     const data = response.data;
     const totalPages = response.data.total_pages;

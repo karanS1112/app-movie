@@ -6,8 +6,9 @@ import { Link } from "react-router-dom";
 
 const HomeCards = ({ movieData, loading, loadMoreMovies }) => {
   const imageUri = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";
+  
   useEffect(() => {
-    loadMoreMovies();
+    // loadMoreMovies();
   });
   var settings = {
     // className: "center",
@@ -18,6 +19,12 @@ const HomeCards = ({ movieData, loading, loadMoreMovies }) => {
     centerPadding: 30,
     speed: 500,
     margin: 20,
+    afterChange: (current) => {
+      if (current === movieData.length - 4) {
+        loadMoreMovies();
+      }
+    },
+    
 
     responsive: [
       {
@@ -76,7 +83,7 @@ const HomeCards = ({ movieData, loading, loadMoreMovies }) => {
                       <h6 className="text-truncate text-black">
                         {data.original_title ? data.original_title : "N/A"}
                       </h6>
-                      <p className="home-card-description">
+                      <p className="home-card-description text-black-50  ">
                         {data.overview ? data.overview : "N/A"}
                       </p>
                     </Link>

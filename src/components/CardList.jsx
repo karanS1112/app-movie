@@ -79,7 +79,7 @@ const CardList = ({ category }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(setResetState);
+    dispatch(setResetState());
    
   }, [pathname]);
   
@@ -126,14 +126,14 @@ const CardList = ({ category }) => {
             wrapperClass="text-center-loader"
           />
         </div>
-      ) : (
+        ) : (
         <InfiniteScroll
           dataLength={matchingCategory?.data?.results?.length || 0}
           next={loadMoreMovies}
           hasMore={true}
-          scrollThreshold={0.8}
+          scrollThreshold={0.9}
           loader={
-            <div className="text-center mt-3">
+            <div className="text-center-loader mt-3">
               <MutatingDots
                 visible={true}
                 height="80"
@@ -162,11 +162,11 @@ const CardList = ({ category }) => {
                             : "./images/404-img.jpg"
                         }
                         className="card-img-top card-list-movie-img-size"
-                        alt={
-                          movie.poster_path
-                            ? "Movie poster"
-                            : "Image not available"
-                        }
+                        // alt={
+                        //   movie.poster_path
+                        //     ? "Movie poster"
+                        //     : "Image not available"
+                        // }
                       />
                       <div className="card-body text-center">
                         <h6 className="text-truncate text-black">

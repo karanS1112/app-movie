@@ -33,7 +33,7 @@ const movieSlice = createSlice({
     setMovieDetail(state, action) {
       return { ...state, movieDetail: action.payload };
     },
-    setResetState(state, action) {
+    setResetState() {
       return initialState;
     },
   },

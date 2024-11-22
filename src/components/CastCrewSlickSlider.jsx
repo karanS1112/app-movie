@@ -1,14 +1,20 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Slider from "react-slick";
+import { castCrewMovie } from "../api/movieApiList";
+import { setCastCrew } from "../store/reducer/movieReducer";
+import { useParams } from "react-router-dom";
 
 function CastCrewSlickSlider() {
+    const param = useParams();
+    const id = param.id;
   const castCrewData = useSelector((state) => state.movieSlice.castCrew);
   const imageUri = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";
   useEffect(() => {
+    console.log("first")
     getCastCrewData();
   }, []);
-
+  const dispatch = useDispatch();
   const getCastCrewData = async () => {
     await castCrewMovie(id)
       .then((res) => {

@@ -80,9 +80,8 @@ const CardList = ({ category }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(setResetState());
-   
   }, [pathname]);
-  
+
   const titleData = [
     {
       title: "Now Playing",
@@ -126,7 +125,7 @@ const CardList = ({ category }) => {
             wrapperClass="text-center-loader"
           />
         </div>
-        ) : (
+      ) : (
         <InfiniteScroll
           dataLength={matchingCategory?.data?.results?.length || 0}
           next={loadMoreMovies}
@@ -159,7 +158,7 @@ const CardList = ({ category }) => {
                         src={
                           movie.poster_path
                             ? `${imageUri}${movie.poster_path}`
-                            : "./images/404-img.jpg"
+                            : "http://localhost:5173/images/404-img.jpg"
                         }
                         className="card-img-top card-list-movie-img-size"
                         // alt={

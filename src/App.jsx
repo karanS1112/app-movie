@@ -50,7 +50,7 @@ function App() {
           element: <MovieDetail />,
         },
         {
-          path: `/movie/cast-crew`,
+          path: `/movie/cast-crew/:id`,
           element: <CastCrewList />,
         },
         {

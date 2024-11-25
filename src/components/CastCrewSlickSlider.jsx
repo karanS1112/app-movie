@@ -19,7 +19,7 @@ function CastCrewSlickSlider() {
   }, []);
 
   const handleViewMoreClick = () => {
-    navigate(`/movie/cast-crew`);
+    navigate(`/movie/cast-crew/${id}`);
   };
 
   const displayedCastData = castCrewData?.cast
@@ -63,39 +63,47 @@ function CastCrewSlickSlider() {
     <div className="container mt-3 mb-2">
       <h4>Cast & Crew</h4>
       <Slider {...settings}>
-        {displayedCastData.map((castData) =>
-          castData.id === "view-more" ? (
-            <div
-              key="view-more"
-              className="card mb-2 view-more-card"
-              onClick={handleViewMoreClick}
-              style={{ cursor: "pointer", textAlign: "center" }}
-            >
-              <div className="card-body">
-                <h5 className="text-black">View More</h5>
+        {displayedCastData?.length > 0 ? (
+          displayedCastData.map((castData) =>
+            castData.id === "view-more" ? (
+              <div
+                key="view-more"
+                className="card mb-2 view-more-card"
+                onClick={handleViewMoreClick}
+                style={{ cursor: "pointer", textAlign: "center" }}
+              >
+                <div className="card-body">
+                  <h5 className="text-black">View More</h5>
+                </div>
               </div>
-            </div>
-          ) : (
-            <div key={castData.id} className="card mb-2">
-              <img
-                src={
-                  castData.profile_path
-                    ? `${imageUri}${castData.profile_path}`
-                    : "./images/404-img.jpg"
-                }
-                className="card-img-top movie-cast-crew-img-size"
-                alt={
-                  castData.poster_path ? "Movie poster" : "Image not available"
-                }
-              />
-              <div className="card-body">
-                <h5 className="text-truncate text-black">{castData.name}</h5>
-                <p className="text-truncate text-black-50">
-                  {castData.character}
-                </p>
+            ) : (
+              <div key={castData.id} className="card mb-2">
+                <img
+                  src={
+                    castData.profile_path
+                      ? `${imageUri}${castData.profile_path}`
+                      : "http://localhost:5173/images/404-img.jpg"
+                  }
+                  className="card-img-top movie-cast-crew-img-size"
+                  alt={
+                    castData.poster_path
+                      ? "Movie poster"
+                      : "Image not available"
+                  }
+                />
+                <div className="card-body">
+                  <h5 className="text-truncate text-black">{castData.name}</h5>
+                  <p className="text-truncate text-black-50">
+                    {castData.character}
+                  </p>
+                </div>
               </div>
-            </div>
+            )
           )
+        ) : (
+          <div className="card mb-2">
+            <p> No Data Found </p>
+          </div>
         )}
       </Slider>
     </div>

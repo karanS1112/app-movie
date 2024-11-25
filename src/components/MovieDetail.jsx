@@ -149,7 +149,6 @@ const MovieDetail = () => {
                     <h6>{release} </h6>
                   </div>
                   <div className="col pt-1">
-                    {" "}
                     {item.genres?.length > 0 ? (
                       <h6 className="ps-3">
                         ({item.origin_country.map((data) => data).join(", ")}){" "}
@@ -164,7 +163,7 @@ const MovieDetail = () => {
                     <BiSolidCameraMovie />
                   </div>
                   <div className="col p-0 pt-1">
-                    <h6>{item.status}</h6>
+                    <h6>{item.status ? item.status : "N/A"}</h6>
                   </div>
                 </div>
                 <div className="row">

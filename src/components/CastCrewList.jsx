@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { fetchCastCrewData } from "../commonFunction/movieApiFunction";
 import { castCrewMovie } from "../api/movieApiList";
 import { setCastCrew } from "../store/reducer/movieReducer";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 function CastCrewList() {
@@ -29,16 +29,27 @@ function CastCrewList() {
               castCrewList?.cast.map((item) => (
                 <div className="col-md-6" key={item.id}>
                   <div className="card">
-                    <img
-                      src={
-                        item.profile_path
-                          ? `${imageUri}${item.profile_path}`
-                          : "http://localhost:5173/images/404-img.jpg"
-                      }
-                      alt={item.name}
-                    />
-                    <h5>{item.name}</h5>
-                    <p>{item.character}</p>
+                    <Link
+                      style={{ textDecorationColor: "transparent" }}
+                      to={`/movie/cast-crew-detail/${item.id}`}
+                    >
+                      <img
+                        src={
+                          item.profile_path
+                            ? `${imageUri}${item.profile_path}`
+                            : "./images/404-img.jpg"
+                        }
+                        alt={item.name}
+                      />
+                      <div className="card-body text-center">
+                        <h5 className="text-truncate text-black">
+                          {item.name}
+                        </h5>
+                        <p className="text-truncate text-black-50">
+                          {item.character}
+                        </p>
+                      </div>
+                    </Link>
                   </div>
                 </div>
               ))
@@ -56,18 +67,27 @@ function CastCrewList() {
               castCrewList?.crew.map((crew) => (
                 <div className="col-md-6" key={crew.id}>
                   <div className="card">
-                    <img
-                      src={
-                        crew.profile_path
-                          ? `${imageUri}${crew.profile_path}`
-                          : "http://localhost:5173/images/404-img.jpg"
-                      }
-                      // alt={crew.name}
-                    />
-                    <div className="card-body">
-                      <h5>{crew.name}</h5>
-                      <p>{crew.character}</p>
-                    </div>
+                    <Link
+                      style={{ textDecorationColor: "transparent" }}
+                      to={`/movie/cast-crew-detail/${crew.id}`}
+                    >
+                      <img
+                        src={
+                          crew.profile_path
+                            ? `${imageUri}${crew.profile_path}`
+                            : "http://localhost:5173/images/404-img.jpg"
+                        }
+                        // alt={crew.name}
+                      />
+                      <div className="card-body text-center">
+                        <h5 className="text-truncate text-black">
+                          {crew.name}
+                        </h5>
+                        <p className="text-truncate text-black-50">
+                          {crew.department}
+                        </p>
+                      </div>
+                    </Link>
                   </div>
                 </div>
               ))

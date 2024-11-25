@@ -91,13 +91,17 @@ function CastCrewDetail() {
           </div>
           <div className="col-md-8">
             <div className="cast-crew-heading">
-              <h2 className="text-white">{selector.name} ({year})</h2>
-              <div className="row">
+              <h2 className="text-white">
+                {selector.name} ({year})
+              </h2>
+              <div className="row mt-3">
                 <div className="col-md-12">
-                  <h5><u>Personal Info:</u></h5>
+                  <h5>
+                    <u>Personal Info:</u>
+                  </h5>
                 </div>
               </div>
-              <div className="row">
+              <div className="row mt-3">
                 <div className="col-md-6">
                   <div className="info-box">
                     <div className="row">
@@ -172,7 +176,9 @@ function CastCrewDetail() {
                       </div>
                       <div className="col p-0 ">
                         <p>
-                          {selector.popularity ? selector.popularity : "N/A"}
+                          {selector.popularity
+                            ? selector.popularity.toFixed(1)
+                            : "N/A"}
                         </p>
                       </div>
                     </div>
@@ -195,29 +201,30 @@ function CastCrewDetail() {
                   </div>
                 </div>
               </div>
-
-              <h6> Biography </h6>
-              <p className="text-white">
-                {isExpanded ? fullBiography : truncatedBiography}
-                {selector?.biography?.length > 150 && (
-                  <button
-                    onClick={toggleBiography}
-                    className="btn btn-link text-warning p-0"
-                  >
-                    {isExpanded ? (
-                      <div className="m-md-2 pb-1">
-                        Read Less
-                        <RiArrowLeftDoubleFill className="ms-1" />
-                      </div>
-                    ) : (
-                      <div className="m-md-2 pb-1">
-                        Read More
-                        <RiArrowRightDoubleFill className="ms-1" />
-                      </div>
-                    )}
-                  </button>
-                )}
-              </p>
+              <div className="mt-4">
+                <h6> Biography </h6>
+                <p className="text-white">
+                  {isExpanded ? fullBiography : truncatedBiography}
+                  {selector?.biography?.length > 150 && (
+                    <button
+                      onClick={toggleBiography}
+                      className="btn btn-link text-warning p-0"
+                    >
+                      {isExpanded ? (
+                        <div className="m-md-2 pb-1">
+                          Read Less
+                          <RiArrowLeftDoubleFill className="ms-1" />
+                        </div>
+                      ) : (
+                        <div className="m-md-2 pb-1">
+                          Read More
+                          <RiArrowRightDoubleFill className="ms-1" />
+                        </div>
+                      )}
+                    </button>
+                  )}
+                </p>
+              </div>
             </div>
           </div>
         </div>

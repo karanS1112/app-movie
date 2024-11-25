@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Slider from "react-slick";
 import { castCrewMovie } from "../api/movieApiList";
 import { setCastCrew } from "../store/reducer/movieReducer";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { fetchCastCrewData } from "../commonFunction/movieApiFunction";
 
 function CastCrewSlickSlider() {
@@ -92,10 +92,15 @@ function CastCrewSlickSlider() {
                   }
                 />
                 <div className="card-body">
+                 <Link
+                      style={{ textDecorationColor: "transparent" }}
+                      to={`/movie/cast-crew-detail/${castData.id}`}
+                    >
                   <h5 className="text-truncate text-black">{castData.name}</h5>
                   <p className="text-truncate text-black-50">
                     {castData.character}
                   </p>
+                </Link>
                 </div>
               </div>
             )

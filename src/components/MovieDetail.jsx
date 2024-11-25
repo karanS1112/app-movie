@@ -88,7 +88,7 @@ const MovieDetail = () => {
                     src={
                       selector.movieSlice.movieDetail.backdrop_path
                         ? `${imageUri}${item.backdrop_path}`
-                        : "./images/404-img.jpg"
+                        : "http://localhost:5173/images/404-img.jpg"
                     }
                     className="card-img-top detail-movie-img-size"
                     alt={

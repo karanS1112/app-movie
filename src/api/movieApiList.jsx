@@ -49,3 +49,11 @@ export const castCrewMovie = async (movieId) => {
   return response;
 }
 
+export const castPersonDetailsApi = async (castId) => {
+  const response = await axios({
+      method: 'GET',
+      url:`https://api.themoviedb.org/3/person/${castId}?api_key=36dec023f16d2531d7df1a52eb67943f&language=en-US`
+  })
+  return response;
+}
+

@@ -4,99 +4,146 @@ import { castCrewMovie } from "../api/movieApiList";
 import { setCastCrew } from "../store/reducer/movieReducer";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { motion } from "framer-motion";
 
 function CastCrewList() {
   const param = useParams();
   const id = param.id;
-  console.log(id, "idd's");
 
-  const castCrewList = useSelector((state) => state.movieSlice.castCrew);
-  console.log(castCrewList, "castCrewList");
-  //   console.log(castCrewData, "castCrewData");
+  const castCrewList = useSelector((state) => state.movieSlice.castCrew || {});
   const imageUri = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";
   const dispatch = useDispatch();
+
   useEffect(() => {
     fetchCastCrewData(castCrewMovie, setCastCrew, dispatch, id);
-  }, []);
+  }, [dispatch, id]);
+
+  const itemContainerVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { staggerChildren: 0.2 } },
+  };
+
+  const imageVariants = {
+    hidden: { opacity: 0, scale: 0 },
+    visible: { opacity: 1, scale: 1 },
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
 
   return (
     <div className="container min-vh-100">
       <div className="row">
-        <div className="col-md-6 mt-2">
+        <div className="col-md-6 mt-3">
           <h4>Cast</h4>
-          <div className="row">
-            {castCrewList?.cast?.length > 0 ? (
-              castCrewList?.cast.map((item) => (
-                <div className="col-md-6" key={item.id}>
-                  <div className="card">
-                    <Link
-                      style={{ textDecorationColor: "transparent" }}
-                      to={`/movie/cast-crew-detail/${item.id}`}
+          {castCrewList?.cast?.length > 0 ? (
+            castCrewList.cast.map((item, index) => (
+              <Link
+                style={{ textDecorationColor: "transparent" }}
+                to={`/movie/cast-crew-detail/${item.id}`}
+              >
+                <motion.div
+                  className="d-flex align-items-center mb-3"
+                  key={index}
+                  initial="hidden"
+                  animate="visible"
+                  variants={itemContainerVariants}
+                >
+                  <motion.img
+                    src={
+                      item.profile_path
+                        ? `${imageUri}${item.profile_path}`
+                        : "/images/404-img.jpg"
+                    }
+                    alt={item.name}
+                    className="rounded-circle"
+                    style={{
+                      width: "100px",
+                      height: "100px",
+                      objectFit: "cover",
+                    }}
+                    variants={imageVariants}
+                    transition={{ duration: 0.5 }}
+                  />
+                  <motion.div className="ms-3">
+                    <motion.h5
+                      className="mb-1 text-white"
+                      variants={textVariants}
+                      transition={{ duration: 1.9 }}
                     >
-                      <img
-                        src={
-                          item.profile_path
-                            ? `${imageUri}${item.profile_path}`
-                            : "./images/404-img.jpg"
-                        }
-                        alt={item.name}
-                      />
-                      <div className="card-body text-center">
-                        <h5 className="text-truncate text-black">
-                          {item.name}
-                        </h5>
-                        <p className="text-truncate text-black-50">
-                          {item.character}
-                        </p>
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="col-md-6">
-                <p>No Data Found</p>
-              </div>
-            )}
-          </div>
+                      {item.name}
+                    </motion.h5>
+                    <motion.p
+                      className="mb-0 text-muted text-white-50"
+                      variants={textVariants}
+                      transition={{ duration: 2.9, delay: 1.6 }}
+                    >
+                      {item.character || "N/A"}
+                    </motion.p>
+                  </motion.div>
+                </motion.div>
+              </Link>
+            ))
+          ) : (
+            <h5>No Cast</h5>
+          )}
         </div>
-        <div className="col-md-6 mt-2">
-          <h4>crew</h4>
-          <div className="row">
-            {castCrewList?.crew?.length > 0 ? (
-              castCrewList?.crew.map((crew) => (
-                <div className="col-md-6" key={crew.id}>
-                  <div className="card">
-                    <Link
-                      style={{ textDecorationColor: "transparent" }}
-                      to={`/movie/cast-crew-detail/${crew.id}`}
+
+        <div className="col-md-6 mt-3">
+          <h4>Crew</h4>
+          {castCrewList?.crew?.length > 0 ? (
+            castCrewList.crew.map((item, index) => (
+              <Link
+                style={{ textDecorationColor: "transparent" }}
+                to={`/movie/cast-crew-detail/${item.id}`}
+              >
+                <motion.div
+                  className="d-flex align-items-center mb-3"
+                  key={index}
+                  initial="hidden"
+                  animate="visible"
+                  variants={itemContainerVariants}
+                >
+                  <motion.img
+                    src={
+                      item.profile_path
+                        ? `${imageUri}${item.profile_path}`
+                        : "/images/404-img.jpg"
+                    }
+                    alt={item.name}
+                    className="rounded-circle"
+                    style={{
+                      width: "100px",
+                      height: "100px",
+                      objectFit: "cover",
+                    }}
+                    variants={imageVariants}
+                    transition={{ duration: 0.5 }}
+                  />
+                  <motion.div className="ms-3">
+                    <motion.h5
+                      className="mb-1 text-white"
+                      variants={textVariants}
+                      transition={{ duration: 1.9 }}
                     >
-                      <img
-                        src={
-                          crew.profile_path
-                            ? `${imageUri}${crew.profile_path}`
-                            : "http://localhost:5173/images/404-img.jpg"
-                        }
-                        // alt={crew.name}
-                      />
-                      <div className="card-body text-center">
-                        <h5 className="text-truncate text-black">
-                          {crew.name}
-                        </h5>
-                        <p className="text-truncate text-black-50">
-                          {crew.department}
-                        </p>
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="col-md-6">
-                <p>No Data Found</p>
-              </div>
-            )}
-          </div>
+                      {item.name}
+                    </motion.h5>
+                    <motion.p
+                      className="mb-0 text-muted text-white-50"
+                      variants={textVariants}
+                      transition={{ duration: 2.9, delay: 1.6 }}
+                    >
+                      {item.job || "N/A"}
+                    </motion.p>
+                  </motion.div>
+                </motion.div>
+              </Link>
+            ))
+          ) : (
+            <h5>No Crew</h5>
+          )}
         </div>
       </div>
     </div>

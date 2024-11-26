@@ -208,3 +208,139 @@ body {
     text-align: center;
     padding: 70px 0px 10px 5px;
 }
+
+/* cast crew detail page  */
+
+
+.cast-crew-detail-content {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    transform: rotateY(0deg);
+    animation: fadeInUp 1.5s ease-in-out;
+}
+
+.image-container {
+    flex: 1;
+}
+
+.profile-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.profile-image:hover {
+    transform: scale(1.05) rotateY(10deg);
+}
+
+.details-container {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.personal-info {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.biography {
+    margin-top: 1rem;
+}
+
+/* button {
+    background-color: #fd7e14;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  } */
+
+.read-less-more-wrap:hover {
+    color: #ffc107;
+}
+
+.read-less-more-wrap {
+    color: #ffc107a2;
+    padding-left: 10px;
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Full-screen modal style */
+
+
+
+/* Modal Overlay */
+.image-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Dark background for the overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Modal Content Styling */
+.image-modal {
+    position: relative;
+    padding: 20px;
+    /* border-radius: 10px; */
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow: hidden;
+    /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); */
+}
+
+.image-modal:focus-visible {
+    outline: none;
+}
+
+.modal-image {
+    width: 100%;
+    height: 600px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+
+.close-modal-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.close-modal-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}

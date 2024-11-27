@@ -55,7 +55,17 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #fff;
+    color: #ffffffa9;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+
+.banner-content:hover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffc107a2;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
     text-align: center;
 }
@@ -70,6 +80,46 @@ body {
     font-size: 1.2em;
     margin-bottom: 1em;
 }
+
+.banner-content h2,
+.banner-content p {
+    animation: bounceText 2s infinite;
+}
+
+@keyframes bounceText {
+
+    0%,
+    100% {
+        transform: translateY(50px);
+    }
+
+    50% {
+        transform: translateY(-50px);
+        /* Move text upwards */
+    }
+}
+
+.banner-content h2 {
+    animation: bounceText 2s infinite;
+    animation-delay: 0s;
+}
+
+.banner-content p {
+    animation: bounceText 2s infinite;
+    animation-delay: 0.5s;
+}
+
+.banner-content h2 {
+    animation: bounceText 1s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.banner-content p {
+    animation: bounceText 2s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+
 
 /* 404 page not found  */
 

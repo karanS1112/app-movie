@@ -44,8 +44,8 @@ const Banner = () => {
                 className="banner-image"
               />
               <div className="banner-content">
-                {/* <h2>{banner.title}</h2>
-            <p>{banner.subtitle}</p> */}
+                <h2>{banner.title}</h2>
+            <p>{banner.subtitle}</p>
               </div>
             </div>
           ))}

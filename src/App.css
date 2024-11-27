@@ -14,22 +14,6 @@ body {
 /* Banner.css */
 .banner-container {
     width: 100%;
-    /* max-width: 1200px; */
-    margin: 1px auto;
-    overflow: hidden;
-}
-
-.banner-slide {
-    position: relative;
-    text-align: center;
-}
-
-
-
-/* Banner.css */
-
-.banner-container {
-    width: 100%;
     margin: 1px auto;
     overflow: hidden;
     padding: 4px auto;
@@ -56,7 +40,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     color: #ffffffa9;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    text-shadow: 2px 2px 8px rgba(182, 171, 16, 0.7);
     text-align: center;
 }
 
@@ -66,7 +50,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     color: #ffc107a2;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    text-shadow: 2px 2px 8px rgba(143, 139, 139, 0.7);
     text-align: center;
 }
 
@@ -122,7 +106,6 @@ body {
 
 
 /* 404 page not found  */
-
 .position-relative {
     background-image: url('http://localhost:5173/images/page.jpg');
     background-size: cover;
@@ -145,17 +128,6 @@ body {
 }
 
 /* Home page  section  css */
-
-.home-card-title {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    font-size: 16px;
-    color: #000;
-    font-weight: bold;
-}
-
 .home-card-description {
     overflow: hidden;
     display: -webkit-box;
@@ -165,47 +137,113 @@ body {
     color: #000;
 }
 
-.slick-track {
-    display: flex !important;
-    gap: 6px;
-}
-
-.home-movie-img-size {
-    height: 30vh;
-    width: 100% !important;
-    /* object-fit: cover; */
-}
-
-.home-movie-rating {
-    display: inline-block;
-    height: 40px;
-    width: 38px;
-    padding: 4px;
-    background-color: #ffc107;
-    border-radius: 50%;
-    z-index: 1;
-    font-size: 12px;
-    font-weight: 600;
-    position: relative;
-    bottom: 130px;
-    left: 215px;
-    text-align: center;
-    justify-content: center;
-    padding-top: 10px;
-    color: #000;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 8px 6px, rgba(0, 0, 0, 0.23) 0px 8px 6px;
-}
-
-.home-rating-position {
-    position: absolute;
-}
-
 .shadow-card-box {
     box-shadow: rgba(255, 193, 7, 0.1) 9px -2px 6px 2px, rgba(250, 233, 183, 0.6) 5px 6px 5px -2px
 }
 
-/* single movie detail page css */
+.slider-container {
+    padding: 20px;
+    background-color: #1b1b1bb9;
+    border-radius: 8px;
+}
 
+.home-cards-wrap {
+    padding: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.home-cards-wrap:hover {
+    transform: scale(1.05);
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.home-movie-img-size {
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 3px solid #c2bdbd;
+}
+
+.card-body {
+    padding: 15px;
+}
+.home-rating-position {
+    display: flex;
+    position: absolute;
+    bottom: 125px;
+    right: 10px;
+}
+
+.circular-progress {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000ab;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.progress-circle {
+    width: 100%;
+    height: 100%;
+    transform: rotate(70deg);
+    
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #e0e0e0;
+    stroke-width: 3.9;
+}
+
+.circle-progress {
+    fill: none;
+    stroke: #ffbb00;
+    stroke-width: 3.9;
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.s ease-in-out;
+}
+
+.progress-percentage {
+    position: absolute;
+    font-size: 0.699rem;
+    font-weight: bold;
+    color: #e0e0e0;
+}
+
+
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .home-movie-img-size {
+        height: 200px;
+    }
+
+    .card-body h6 {
+        font-size: 0.9rem;
+    }
+
+    .home-card-description {
+        font-size: 0.8rem;
+    }
+}
+
+
+
+
+/* single movie detail page css */
 .detail-icon-color {
     color: #ffc107;
 }
@@ -244,13 +282,14 @@ body {
     width: 100% !important;
 }
 
-/* movie details page  */
 
+/* movie details page  */
 .movie-cast-crew-img-size {
     height: 20vh;
     width: 100% !important;
     /* object-fit: cover; */
 }
+
 
 /* cast crew slick slider page  */
 .view-more-card {
@@ -259,9 +298,8 @@ body {
     padding: 70px 0px 10px 5px;
 }
 
+
 /* cast crew detail page  */
-
-
 .cast-crew-detail-content {
     display: flex;
     flex-direction: row;

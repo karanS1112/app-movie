@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 
 const HomeCards = ({ movieData, loading, loadMoreMovies }) => {
   const imageUri = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";
-  
+
   var settings = {
     infinite: false,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: 5,
+    slidesToScroll: 5,
     centerPadding: 30,
     speed: 500,
     margin: 20,
@@ -19,7 +19,6 @@ const HomeCards = ({ movieData, loading, loadMoreMovies }) => {
         loadMoreMovies();
       }
     },
-    
 
     responsive: [
       {
@@ -83,11 +82,32 @@ const HomeCards = ({ movieData, loading, loadMoreMovies }) => {
                       </p>
                     </Link>
                     <div className="home-rating-position">
-                      <span className="home-movie-rating">
-                        {data.vote_average
-                          ? `${(data.vote_average * 10).toFixed(0)}%`
-                          : "N/A"}
-                      </span>
+                      <div className="circular-progress">
+                        <svg className="progress-circle" viewBox="0 0 36 36">
+                          <path
+                            className="circle-bg"
+                            d="M18 2.0845
+                            a 15.9155 15.9155 0 1 1 0 31.831
+                            a 15.9155 15.9155 0 1 1 0 -31.831"
+                          />
+                          <path
+                            className="circle-progress"
+                            d="M18 2.0845
+                            a 15.9155 15.9155 0 1 1 0 31.831
+                            a 15.9155 15.9155 0 1 1 0 -31.831"
+                            style={{
+                              strokeDasharray: `${
+                                data.vote_average ? data.vote_average * 10 : 0
+                              }, 100`,
+                            }}
+                          />
+                        </svg>
+                        <div className="progress-percentage">
+                          {data.vote_average
+                            ? `${(data.vote_average * 10).toFixed(0)}%`
+                            : "N/A"}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

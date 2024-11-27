@@ -24,7 +24,7 @@ const Banner = () => {
       image:
         "https://images.hdqwalls.com/wallpapers/wolverine-weapon-x-unleashed-vl.jpg",
       title: "Explore New Features",
-      subtitle: "Stay updated with our latest offerings",
+      subtitle: "Stay updated with our latest movies",
     },
     {
       image:

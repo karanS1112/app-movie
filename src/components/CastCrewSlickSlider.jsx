@@ -118,7 +118,7 @@ function CastCrewSlickSlider() {
                           <h6 className="text-truncate text-black">
                             {castData.name ? castData.name : "N/A"}
                           </h6>
-                          <p className="home-card-description text-black-50  ">
+                          <p className="home-card-description text-truncate text-black-50  ">
                             {castData.character ? castData.character : "N/A"}
                           </p>
                         </Link>

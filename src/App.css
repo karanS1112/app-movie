@@ -9,6 +9,7 @@ body {
     color: #fff !important;
     height: 100vh;
     font-family: Arial, sans-serif;
+    z-index: 9999 !important;
 }
 
 /* Banner.css */
@@ -451,3 +452,15 @@ body {
   .cast-crew-detail-card-overview {
     background-color: #1111116e !important;
 }
+
+.progress-bar {
+    position: fixed;
+    top: 90px;
+    left: 0;
+    right: 0;
+    height: 10px !important;
+    background: #ffc107a2 !important;
+    transform-origin: 0%;
+    z-index: 9999 !important;
+  }
+  

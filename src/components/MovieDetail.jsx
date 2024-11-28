@@ -20,8 +20,10 @@ const MovieDetail = () => {
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
   const item = selector.movieSlice.movieDetail;
-  const imageUri = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";
-  const orginalImgPoster = "https://image.tmdb.org/t/p/original/";
+  // const imageUri = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";
+  const imageUri = "https://media.themoviedb.org/t/p/w220_and_h330_face";
+  // const orginalImgPoster = "https://image.tmdb.org/t/p/original/";
+  const orginalImgPoster="https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces"
   const backgroundImage = orginalImgPoster + item.poster_path;
 
   const runtimeInMinutes = item.runtime;
@@ -40,7 +42,6 @@ const MovieDetail = () => {
   const release = date + "/" + month + "/" + year;
   console.log("release",month);
   
-  // const imageUri = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";
   const movieDetailStyle = {
     backgroundImage: `linear-gradient(rgba(0 0 0 / 79%), rgba(157, 18, 151, 0.2)), url("${backgroundImage}")`,
     backgroundSize: "cover",
@@ -74,7 +75,7 @@ const MovieDetail = () => {
   return (
     <div className="fluid-container min-vh-100">
       {loading ? (
-        <div className="container">
+        <div className="container min-vh-100">
           <MutatingDots
             visible={true}
             height="100"

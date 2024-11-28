@@ -28,7 +28,8 @@ const CardList = ({ category }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const titleCategory = category;
 
-  const imageUri = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";
+  // const imageUri = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";
+  const imageUri ="https://media.themoviedb.org/t/p/w220_and_h330_face/"
 
   useEffect(() => {
     if (pathname === "/movie/now-playing") {
@@ -132,18 +133,21 @@ const CardList = ({ category }) => {
           hasMore={true}
           scrollThreshold={0.9}
           loader={
-            <div className="text-center-loader mt-3">
-              <MutatingDots
-                visible={true}
-                height="80"
-                width="80"
-                color="#fd7e14"
-                secondaryColor="#ffc107"
-                radius="12.5"
-                ariaLabel="mutating-dots-loading"
-              />
-            </div>
+            matchingCategory?.data?.page < matchingCategory?.data?.total_pages ? (
+              <div className="text-center-loader mt-3">
+                <MutatingDots
+                  visible={true}
+                  height="80"
+                  width="80"
+                  color="#fd7e14"
+                  secondaryColor="#ffc107"
+                  radius="12.5"
+                  ariaLabel="mutating-dots-loading"
+                />
+              </div>
+            ) : null
           }
+          style={{overflow:"none"}}
         >
           <div className="row">
             {matchingCategory?.data?.results?.length > 0 ? (
@@ -161,11 +165,11 @@ const CardList = ({ category }) => {
                             : "http://localhost:5173/images/404-img.jpg"
                         }
                         className="card-img-top card-list-movie-img-size"
-                        // alt={
-                        //   movie.poster_path
-                        //     ? "Movie poster"
-                        //     : "Image not available"
-                        // }
+                        alt={
+                          movie.poster_path
+                            ? "Movie poster"
+                            : "Image not available"
+                        }
                       />
                       <div className="card-body text-center">
                         <h6 className="text-truncate text-black">

@@ -66,7 +66,7 @@ function CastCrewSlickSlider() {
       <div className="mt-4">
         <h4>Cast & Crew</h4>
         {loading ? (
-          <div className="justify-content-center">
+          <div className="justify-content-center min-vh-100">
             <MutatingDots
               visible={true}
               height="100"

@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useSpring } from "framer-motion";
 
 const HomeCards = ({ movieData, loading, loadMoreMovies }) => {
-  const imageUri = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";
+  // const imageUri = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";
+  const imageUri ="https://media.themoviedb.org/t/p/w220_and_h330_face"
   var settings = {
     infinite: false,
     slidesToShow: 5,

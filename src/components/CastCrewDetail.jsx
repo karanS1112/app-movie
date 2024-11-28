@@ -27,6 +27,7 @@ const CastCrewDetail = () => {
 
   useEffect(() => {
     getCastCrewDetails();
+    window.scroll(0, 0);
   }, []);
 
   const getCastCrewDetails = async () => {
@@ -122,15 +123,22 @@ const CastCrewDetail = () => {
                 {selector.deathday || "Not Available"}
               </p>
             </div>
-            <div className="biography alert-heading">
+            <div className="biography alert-heading p-2 card cast-crew-detail-card-overview">
               <h4 className="details-container">Biography</h4>
               <p>
-                {isExpanded
-                  ? selector.biography
-                  : selector.biography?.slice(0, 300) + "..."}
-                <span className="read-less-more-wrap" onClick={toggleBiography}>
-                  {isExpanded ? "Read Less" : "Read More"}
-                </span>
+                {selector.biography
+                  ? isExpanded
+                    ? selector.biography
+                    : selector.biography.slice(0, 300) + "..."
+                  : `No biography available ${selector.name}`}
+                {selector.biography && (
+                  <span
+                    className="read-less-more-wrap"
+                    onClick={toggleBiography}
+                  >
+                    {isExpanded ? "Read Less" : "Read More"}
+                  </span>
+                )}
               </p>
             </div>
           </motion.div>

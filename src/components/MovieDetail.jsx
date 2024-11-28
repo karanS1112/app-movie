@@ -12,6 +12,7 @@ import { FaRegStar } from "react-icons/fa";
 import { MutatingDots } from "react-loader-spinner";
 import Slider from "react-slick";
 import CastCrewSlickSlider from "./CastCrewSlickSlider";
+import Modal from "react-modal";
 const MovieDetail = () => {
   const param = useParams();
   const [loading, setLoading] = useState(true);
@@ -44,8 +45,13 @@ const MovieDetail = () => {
     minHeight: "100vh",
   };
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
   useEffect(() => {
     getMovieDetails();
+    // window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
   }, []);
 
   const getMovieDetails = async () => {
@@ -96,6 +102,7 @@ const MovieDetail = () => {
                         ? "Movie poster"
                         : "Image not available"
                     }
+                    onClick={openModal}
                   />
                 </div>
               </div>
@@ -190,6 +197,27 @@ const MovieDetail = () => {
         </div>
       )}
       <CastCrewSlickSlider />
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        className="image-modal"
+        overlayClassName="image-overlay"
+      >
+        <div className="modal-content">
+          <img
+            className="modal-image"
+            src={
+              selector.movieSlice.movieDetail.backdrop_path
+                ? `${imageUri}${item.backdrop_path}`
+                : "http://localhost:5173/images/404-img.jpg"
+            }
+            alt={selector.name}
+          />
+          <button className="close-modal-btn" onClick={closeModal}>
+            Close
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 };

@@ -104,7 +104,6 @@ body {
 }
 
 
-
 /* 404 page not found  */
 .position-relative {
     background-image: url('http://localhost:5173/images/page.jpg');
@@ -138,13 +137,13 @@ body {
 }
 
 .shadow-card-box {
-    box-shadow: rgba(255, 193, 7, 0.1) 9px -2px 6px 2px, rgba(250, 233, 183, 0.6) 5px 6px 5px -2px
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .slider-container {
-    padding: 20px;
+    /* padding: 20px;
     background-color: #1b1b1bb9;
-    border-radius: 8px;
+    border-radius: 8px; */
 }
 
 .home-cards-wrap {
@@ -157,14 +156,14 @@ body {
 }
 
 .card {
-    border: none;
-    border-radius: 12px;
+    /* border: none;
+    border-radius: 50px;
     overflow: hidden;
-    transition: box-shadow 0.3s ease-in-out;
+    transition: box-shadow 0.3s ease-in-out; */
 }
 
 .card:hover {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: rgba(255, 193, 7, 0.1) 9px -2px 6px 2px, rgba(250, 233, 183, 0.6) 5px 6px 5px -2px
 }
 
 .home-movie-img-size {
@@ -223,8 +222,6 @@ body {
     color: #e0e0e0;
 }
 
-
-
 /* Mobile Adjustments */
 @media (max-width: 768px) {
     .home-movie-img-size {
@@ -239,9 +236,6 @@ body {
         font-size: 0.8rem;
     }
 }
-
-
-
 
 /* single movie detail page css */
 .detail-icon-color {
@@ -285,8 +279,8 @@ body {
 
 /* movie details page  */
 .movie-cast-crew-img-size {
-    height: 20vh;
-    width: 100% !important;
+    /* height: 20vh;
+    width: 100% !important; */
     /* object-fit: cover; */
 }
 
@@ -341,16 +335,6 @@ body {
     margin-top: 1rem;
 }
 
-/* button {
-    background-color: #fd7e14;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  } */
-
 .read-less-more-wrap:hover {
     color: #ffc107;
 }
@@ -371,9 +355,6 @@ body {
         opacity: 1;
     }
 }
-
-/* Full-screen modal style */
-
 
 
 /* Modal Overlay */
@@ -431,4 +412,42 @@ body {
 
 .close-modal-btn:hover {
     background-color: rgba(255, 255, 255, 0.3);
+}
+.no-data-card {
+  margin: 0 auto;
+  text-align: center;
+}
+
+/*  cast crew slick slider */
+
+
+  .view-more-button {
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin-top: 50%;
+  }
+  
+  .view-more-button h5 {
+    color: white;
+    background-color: #000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .view-more-button h5:hover {
+    background-color: #c0c0c0;
+    color: #000;
+  }
+  
+  .no-data-card {
+    margin: 0 auto;
+    text-align: center;
+  }
+  .cast-crew-detail-card-overview {
+    background-color: #1111116e !important;
 }

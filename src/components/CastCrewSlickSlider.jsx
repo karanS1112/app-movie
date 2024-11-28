@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Slider from "react-slick";
 import { castCrewMovie } from "../api/movieApiList";
 import { setCastCrew } from "../store/reducer/movieReducer";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { fetchCastCrewData } from "../commonFunction/movieApiFunction";
+import { MutatingDots } from "react-loader-spinner";
 
 function CastCrewSlickSlider() {
   const param = useParams();
@@ -13,9 +14,9 @@ function CastCrewSlickSlider() {
   const castCrewData = useSelector((state) => state.movieSlice.castCrew);
   const imageUri = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";
   const dispatch = useDispatch();
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetchCastCrewData(castCrewMovie, setCastCrew, dispatch, id);
+    fetchCastCrewData(castCrewMovie, setCastCrew, dispatch, id, setLoading);
   }, []);
 
   const handleViewMoreClick = () => {
@@ -23,13 +24,14 @@ function CastCrewSlickSlider() {
   };
 
   const displayedCastData = castCrewData?.cast
-    ? [...castCrewData.cast.slice(0, 14), { id: "view-more" }]
+    ? [...castCrewData.cast.slice(0, 8), { id: "view-more" }]
     : [];
 
-  var settings = {
+  var castCrewSettings = {
     infinite: false,
-    slidesToShow: 7,
+    slidesToShow: 5,
     slidesToScroll: 1,
+    padding: 20,
     speed: 500,
     responsive: [
       {
@@ -60,57 +62,79 @@ function CastCrewSlickSlider() {
   };
 
   return (
-    <div className="container mt-3 mb-2">
-      <h4>Cast & Crew</h4>
-      <Slider {...settings}>
-        {displayedCastData?.length > 0 ? (
-          displayedCastData.map((castData) =>
-            castData.id === "view-more" ? (
-              <div
-                key="view-more"
-                className="card mb-2 view-more-card"
-                onClick={handleViewMoreClick}
-                style={{ cursor: "pointer", textAlign: "center" }}
-              >
-                <div className="card-body">
-                  <h5 className="text-black">View More</h5>
-                </div>
-              </div>
-            ) : (
-              <div key={castData.id} className="card mb-2">
-                <img
-                  src={
-                    castData.profile_path
-                      ? `${imageUri}${castData.profile_path}`
-                      : "http://localhost:5173/images/404-img.jpg"
-                  }
-                  className="card-img-top movie-cast-crew-img-size"
-                  alt={
-                    castData.poster_path
-                      ? "Movie poster"
-                      : "Image not available"
-                  }
-                />
-                <div className="card-body">
-                 <Link
-                      style={{ textDecorationColor: "transparent" }}
-                      to={`/movie/cast-crew-detail/${castData.id}`}
-                    >
-                  <h5 className="text-truncate text-black">{castData.name}</h5>
-                  <p className="text-truncate text-black-50">
-                    {castData.character}
-                  </p>
-                </Link>
-                </div>
-              </div>
-            )
-          )
-        ) : (
-          <div className="card mb-2">
-            <p> No Data Found </p>
+    <div className="container">
+      <div className="mt-4">
+        <h4>Cast & Crew</h4>
+        {loading ? (
+          <div className="justify-content-center">
+            <MutatingDots
+              visible={true}
+              height="100"
+              width="100"
+              color="#fd7e14"
+              secondaryColor="#ffc107"
+              radius="12.5"
+              ariaLabel="mutating-dots-loading"
+              wrapperStyle={{}}
+              wrapperClass="text-center-loader"
+            />
           </div>
+        ) : (
+          <Slider {...castCrewSettings}>
+            {displayedCastData.length > 0 ? (
+              displayedCastData.map((castData, index) =>
+                castData.id === "view-more" ? (
+                  <div
+                    key="view-more"
+                    className="view-more-button"
+                    onClick={handleViewMoreClick}
+                  >
+                    <h5>View More</h5>
+                  </div>
+                ) : (
+                  <div
+                    key={castData.id}
+                    className="home-cards-wrap slick-track"
+                  >
+                    <div className="card text-white bg-white mb-3 shadow-card-box ">
+                      <img
+                        src={
+                          castData.profile_path
+                            ? `${imageUri}${castData.profile_path}`
+                            : "./images/404-img.jpg"
+                        }
+                        className="card-img-top home-movie-img-size"
+                        alt={
+                          castData.profile_path
+                            ? "Movie poster"
+                            : "Image not available"
+                        }
+                      />
+                      <div className="card-body">
+                        <Link
+                          style={{ textDecorationColor: "transparent" }}
+                          to={`/movie/cast-crew-detail/${castData.id}`}
+                        >
+                          <h6 className="text-truncate text-black">
+                            {castData.name ? castData.name : "N/A"}
+                          </h6>
+                          <p className="home-card-description text-black-50  ">
+                            {castData.character ? castData.character : "N/A"}
+                          </p>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                )
+              )
+            ) : (
+              <div className="card mb-2 no-data-card">
+                <p>No Data Found</p>
+              </div>
+            )}
+          </Slider>
         )}
-      </Slider>
+      </div>
     </div>
   );
 }

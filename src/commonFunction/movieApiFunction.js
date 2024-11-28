@@ -18,12 +18,14 @@ export const fetchMovieData = async (apiFunction, dispatch, action, setLoading,c
   }
 };
 
-export const fetchCastCrewData = async(castCrewMovie,setCastCrew,dispatch,id)=>{
+export const fetchCastCrewData = async(castCrewMovie,setCastCrew,dispatch,id,setLoading)=>{
     try {
       const res = await castCrewMovie(id);
       const castCrewResponse = res.data;
-      // console.log(castCrewResponse,"castCrewResponse")
       dispatch(setCastCrew(castCrewResponse));
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
     } catch (error) {
       console.error(error);
     }

@@ -30,3 +30,16 @@ export const fetchCastCrewData = async(castCrewMovie,setCastCrew,dispatch,id,set
       console.error(error);
     }
 }
+
+export const fetchVideoData = async(castCrewMovie,setCastCrew,dispatch,id,setLoading)=>{
+  try {
+    const res = await castCrewMovie(id);
+    const castCrewResponse = res.data;
+    dispatch(setCastCrew(castCrewResponse));
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  } catch (error) {
+    console.error(error);
+  }
+}

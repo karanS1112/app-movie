@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 const baseUrl = "https://api.themoviedb.org/3/movie/";
+const castCrewBaseUrl = "https://api.themoviedb.org/3/person/"
 
 export const NowPlayingMovieDataApi = async (currentPage) => {
   const response = await axios({
@@ -52,8 +53,15 @@ export const castCrewMovie = async (movieId) => {
 export const castPersonDetailsApi = async (castId) => {
   const response = await axios({
       method: 'GET',
-      url:`https://api.themoviedb.org/3/person/${castId}?api_key=36dec023f16d2531d7df1a52eb67943f&language=en-US`
+      url:`${castCrewBaseUrl}${castId}?api_key=36dec023f16d2531d7df1a52eb67943f&language=en-US`
   })
   return response;
 }
 
+export const videoTrailer = async (movieId) => {
+  const response = await axios({
+      method: 'GET',
+      url: `${baseUrl}${movieId}/videos?api_key=36dec023f16d2531d7df1a52eb67943f&language=en-US`
+  })
+  return response;
+}

@@ -13,6 +13,7 @@ import { MutatingDots } from "react-loader-spinner";
 import Slider from "react-slick";
 import CastCrewSlickSlider from "./CastCrewSlickSlider";
 import Modal from "react-modal";
+import VideoSlickSlider from "./VideoSlickSlider";
 const MovieDetail = () => {
   const param = useParams();
   const [loading, setLoading] = useState(true);
@@ -40,7 +41,7 @@ const MovieDetail = () => {
   var month = release_date.getMonth() + 1;
   var date = release_date.getDate();
   const release = date + "/" + month + "/" + year;
-  console.log("release",month);
+  // console.log("release",month);
   
   const movieDetailStyle = {
     backgroundImage: `linear-gradient(rgba(0 0 0 / 79%), rgba(157, 18, 151, 0.2)), url("${backgroundImage}")`,
@@ -201,6 +202,7 @@ const MovieDetail = () => {
         </div>
       )}
       <CastCrewSlickSlider />
+      <VideoSlickSlider/>
       <Modal
         isOpen={isModalOpen}
         onRequestClose={closeModal}

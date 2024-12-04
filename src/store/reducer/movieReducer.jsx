@@ -7,7 +7,8 @@ const initialState = {
   popular: [],
   movieDetail: [],
   castCrew:[],
-  castCrewDetail:[]
+  castCrewDetail:[],
+  videoData:[]
 
 };
 
@@ -41,6 +42,9 @@ const movieSlice = createSlice({
     setCastCrewDetail(state, action) {
       return { ...state, castCrewDetail: action.payload };
     },
+    setVideoData(state, action) {
+      return { ...state, videoData: action.payload };
+    },
     setResetState() {
       return initialState;
     },
@@ -56,5 +60,6 @@ export const {
   setResetState,
   setCastCrew,
   setCastCrewDetail,
+  setVideoData,
 } = movieSlice.actions;
 export default movieSlice.reducer;

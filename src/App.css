@@ -464,3 +464,50 @@ body {
     z-index: 9999 !important;
   }
   
+  /* video section  */
+  .image-wrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+  }
+  
+  .video-thumbnail {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .play-button-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px; /* Adjust size of the play button */
+    color: white;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    border-radius: 50%; /* Make the overlay circular */
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .play-button-overlay i {
+    font-style: normal; /* Use a play icon from a font library like FontAwesome */
+  }
+  .video-view-more-button{
+    
+        cursor: pointer;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        margin-top: 35%;
+  }
+  .video-view-more-button h5:hover {
+    background-color: #c0c0c0;
+    color: #000;
+  }

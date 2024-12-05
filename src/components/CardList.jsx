@@ -157,6 +157,7 @@ const CardList = ({ category }) => {
                     <Link
                       style={{ textDecorationColor: "transparent" }}
                       to={`/movie/${movie.id}`}
+                      title= {movie?.title ? movie.title : "N/A"}
                     >
                       <img
                         src={

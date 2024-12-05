@@ -16,7 +16,7 @@ const HomeCards = ({ movieData, loading, loadMoreMovies }) => {
     speed: 500,
     margin: 20,
     afterChange: (current) => {
-      if (current === movieData.length - 4) {
+      if (current === movieData.length - 5) {
         loadMoreMovies();
       }
     },
@@ -74,6 +74,7 @@ const HomeCards = ({ movieData, loading, loadMoreMovies }) => {
                     <Link
                       style={{ textDecorationColor: "transparent" }}
                       to={`/movie/${data.id}`}
+                      title={data.original_title ? data.original_title : "N/A"}
                     >
                       <h6 className="text-truncate text-black">
                         {data.original_title ? data.original_title : "N/A"}

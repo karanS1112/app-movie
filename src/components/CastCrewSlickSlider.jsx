@@ -114,11 +114,12 @@ function CastCrewSlickSlider() {
                         <Link
                           style={{ textDecorationColor: "transparent" }}
                           to={`/movie/cast-crew-detail/${castData.id}`}
+                          title={castData.name ? castData.name : "N/A"}
                         >
-                          <h6 className="text-truncate text-black">
+                          <h6 className="text-truncate text-black text-center">
                             {castData.name ? castData.name : "N/A"}
                           </h6>
-                          <p className="home-card-description text-truncate text-black-50  ">
+                          <p className="home-card-description text-truncate text-black-50 text-center">
                             {castData.character ? castData.character : "N/A"}
                           </p>
                         </Link>

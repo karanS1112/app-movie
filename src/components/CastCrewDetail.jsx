@@ -92,6 +92,7 @@ const CastCrewDetail = () => {
                   : "http://localhost:5173/images/404-img.jpg"
               }
               alt={selector.name}
+              title={selector.name}
               onClick={openModal}
             />
           </motion.div>

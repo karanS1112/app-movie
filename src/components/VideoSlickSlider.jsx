@@ -6,6 +6,8 @@ import { setVideoData } from "../store/reducer/movieReducer";
 import { fetchVideoData } from "../commonFunction/movieApiFunction";
 import { MutatingDots } from "react-loader-spinner";
 import Slider from "react-slick";
+import { FaPlayCircle } from "react-icons/fa";
+import Modal from "react-modal";
 
 function VideoSlickSlider() {
   const param = useParams();
@@ -21,7 +23,7 @@ function VideoSlickSlider() {
   const displayedVideoData = videoData?.results
     ? [...videoData.results.slice(0, 6), { id: "view-more" }]
     : [];
-
+  console.log(displayedVideoData);
   useEffect(() => {
     fetchVideoData(videoTrailer, setVideoData, dispatch, id, setLoading);
   }, []);
@@ -29,6 +31,13 @@ function VideoSlickSlider() {
   const handleViewMoreClick = () => {
     // navigate(`/movie/cast-crew/${id}`);
   };
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedVideoKey, setSelectedVideoKey] = useState(null);
+  const openModal = (key) => {
+    setSelectedVideoKey(key);
+    setIsModalOpen(true);
+  };
+  const closeModal = () => setIsModalOpen(false);
 
   var videoSettings = {
     infinite: false,
@@ -89,7 +98,7 @@ function VideoSlickSlider() {
                 videoData.id === "view-more" ? (
                   <div
                     key="view-more"
-                    className="view-more-button"
+                    className="video-view-more-button"
                     // onClick={handleViewMoreClick}
                   >
                     <h5>View More</h5>
@@ -99,22 +108,24 @@ function VideoSlickSlider() {
                     key={videoData.id}
                     className="home-cards-wrap slick-track"
                   >
-                    <div className="card text-white bg-white mb-3 shadow-card-box ">
-                      <video
-                        controls
-                        width="100%"
-                        height="auto"
-                        className="video-player"
-                        // onError={(e) =>
-                        //   console.error("Error loading video:", e)
-                        // }
-                        // onLoadedData={() =>
-                        //   console.log("Video loaded successfully")
-                        // }
+                    <div className="card text-white bg-white mb-3 shadow-card-box">
+                      <div
+                        className="image-wrapper"
+                        onClick={() => openModal(videoData.key)}
                       >
-                        <source src={`https://www.youtube.com/watch?v=RGhTO0ihiLo.mp4`} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
+                        <img
+                          src={
+                            videoData.key
+                              ? `https://img.youtube.com/vi/${videoData.key}/0.jpg`
+                              : "http://localhost:5173/images/404-img.jpg"
+                          }
+                          alt="Video Thumbnail"
+                          className="video-thumbnail"
+                        />
+                        <div className="play-button-overlay">
+                          <FaPlayCircle />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )
@@ -127,6 +138,30 @@ function VideoSlickSlider() {
           </Slider>
         )}
       </div>
+      <Modal
+        isOpen={selectedVideoKey !== null && isModalOpen}
+        onRequestClose={closeModal}
+        className="image-modal"
+        overlayClassName="image-overlay"
+        appElement={document.getElementById("root")}
+      >
+        <div className="modal-content">
+          <button className="close-modal-btn" onClick={closeModal}>
+            Close
+          </button>
+          {selectedVideoKey && (
+            <iframe
+              width="100%"
+              height="215px"
+              src={`https://www.youtube.com/embed/${selectedVideoKey}?autoplay=1`}
+              frameBorder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              title="Video"
+            ></iframe>
+          )}
+        </div>
+      </Modal>
     </div>
   );
 }

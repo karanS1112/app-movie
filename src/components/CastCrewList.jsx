@@ -60,6 +60,7 @@ function CastCrewList() {
                 <Link
                   style={{ textDecorationColor: "transparent" }}
                   to={`/movie/cast-crew-detail/${item.id}`}
+                  title={item.name}
                 >
                   <motion.div
                     className="d-flex align-items-center mb-3"
@@ -115,6 +116,7 @@ function CastCrewList() {
                 <Link
                   style={{ textDecorationColor: "transparent" }}
                   to={`/movie/cast-crew-detail/${item.id}`}
+                  title={item.name}
                 >
                   <motion.div
                     className="d-flex align-items-center mb-3"

@@ -107,6 +107,7 @@ const MovieDetail = () => {
                         ? "Movie poster"
                         : "Image not available"
                     }
+                    title={item.title}
                     onClick={openModal}
                   />
                 </div>

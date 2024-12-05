@@ -14,29 +14,28 @@ function VideoSlickSlider() {
   const navigate = useNavigate();
   const id = param.id;
   const videoData = useSelector((state) => state.movieSlice.videoData);
-  const thumbImgUri = "";
-  // const videoThumbImage = `https://img.youtube.com/vi/${item.key}/0.jpg`;
-  const video = `https://www.youtube.com/watch?v=`;
-  // const video = 'https://www.youtube.com/watch?key='
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const displayedVideoData = videoData?.results
     ? [...videoData.results.slice(0, 6), { id: "view-more" }]
     : [];
-  console.log(displayedVideoData);
+
   useEffect(() => {
     fetchVideoData(videoTrailer, setVideoData, dispatch, id, setLoading);
   }, []);
-  // console.log(displayedVideoData);
+
   const handleViewMoreClick = () => {
-    // navigate(`/movie/cast-crew/${id}`);
+    navigate(`/movie/video-list/${id}`);
   };
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedVideoKey, setSelectedVideoKey] = useState(null);
+
   const openModal = (key) => {
     setSelectedVideoKey(key);
     setIsModalOpen(true);
   };
+
   const closeModal = () => setIsModalOpen(false);
 
   var videoSettings = {
@@ -94,12 +93,11 @@ function VideoSlickSlider() {
           <Slider {...videoSettings}>
             {displayedVideoData.length > 0 ? (
               displayedVideoData.map((videoData, index) =>
-                // console.log(videoData.key)
                 videoData.id === "view-more" ? (
                   <div
                     key="view-more"
                     className="video-view-more-button"
-                    // onClick={handleViewMoreClick}
+                    onClick={handleViewMoreClick}
                   >
                     <h5>View More</h5>
                   </div>
@@ -116,7 +114,7 @@ function VideoSlickSlider() {
                         <img
                           src={
                             videoData.key
-                              ? `https://img.youtube.com/vi/${videoData.key}/0.jpg`
+                              ? `https://img.youtube.com/vi/${videoData.key}/hqdefault.jpg`
                               : "http://localhost:5173/images/404-img.jpg"
                           }
                           alt="Video Thumbnail"
@@ -146,9 +144,9 @@ function VideoSlickSlider() {
         appElement={document.getElementById("root")}
       >
         <div className="modal-content">
-          <button className="close-modal-btn" onClick={closeModal}>
+          {/* <button className="close-modal-btn" onClick={closeModal}>
             Close
-          </button>
+          </button> */}
           {selectedVideoKey && (
             <iframe
               width="100%"

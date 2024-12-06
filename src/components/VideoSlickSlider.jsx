@@ -8,6 +8,7 @@ import { MutatingDots } from "react-loader-spinner";
 import Slider from "react-slick";
 import { FaPlayCircle } from "react-icons/fa";
 import Modal from "react-modal";
+import ReactPlayer from "react-player";
 
 function VideoSlickSlider() {
   const param = useParams();
@@ -137,29 +138,27 @@ function VideoSlickSlider() {
         )}
       </div>
       <Modal
-        isOpen={selectedVideoKey !== null && isModalOpen}
-        onRequestClose={closeModal}
-        className="image-modal"
-        overlayClassName="image-overlay"
-        appElement={document.getElementById("root")}
-      >
-        <div className="modal-content">
-          {/* <button className="close-modal-btn" onClick={closeModal}>
-            Close
-          </button> */}
-          {selectedVideoKey && (
-            <iframe
+      isOpen={selectedVideoKey !== null && isModalOpen}
+      onRequestClose={closeModal}
+      className="video-modal"
+      overlayClassName="video-overlay"
+      appElement={document.getElementById("root")}
+    >
+      <div className="modal-content">
+        {selectedVideoKey && (
+          <div className="player-wrapper">
+            <ReactPlayer
+              playing
+              controls
               width="100%"
-              height="215px"
-              src={`https://www.youtube.com/embed/${selectedVideoKey}?autoplay=1`}
-              frameBorder="0"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              title="Video"
-            ></iframe>
-          )}
-        </div>
-      </Modal>
+              height="100%"
+              className="react-player"
+              url={`https://www.youtube.com/embed/${selectedVideoKey}?autoplay=1`}
+            />
+          </div>
+        )}
+      </div>
+    </Modal>
     </div>
   );
 }

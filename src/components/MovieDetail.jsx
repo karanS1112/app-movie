@@ -36,12 +36,10 @@ const MovieDetail = () => {
   const revenue = (Math.abs(Number(item.revenue)) / 1.0e6).toFixed(1) + " M";
 
   const release_date = new Date(item.release_date);
-  console.log(release_date)
   var year = release_date.getFullYear();
   var month = release_date.getMonth() + 1;
   var date = release_date.getDate();
   const release = date + "/" + month + "/" + year;
-  // console.log("release",month);
   
   const movieDetailStyle = {
     backgroundImage: `linear-gradient(rgba(0 0 0 / 79%), rgba(157, 18, 151, 0.2)), url("${backgroundImage}")`,

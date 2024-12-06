@@ -6,10 +6,9 @@ const initialState = {
   topRated: [],
   popular: [],
   movieDetail: [],
-  castCrew:[],
-  castCrewDetail:[],
-  videoData:[]
-
+  castCrew: [],
+  castCrewDetail: [],
+  videoData: [],
 };
 
 const movieSlice = createSlice({
@@ -17,8 +16,7 @@ const movieSlice = createSlice({
   initialState: initialState,
   reducers: {
     setNowPlaying(state, action) {
-      // console.log("action", action.payload)
-      return { ...state, nowPlaying: action.payload};
+      return { ...state, nowPlaying: action.payload };
     },
     setUpcoming(state, action) {
       //This line returns a new state object, which is an updated version of the current state.

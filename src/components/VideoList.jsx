@@ -6,13 +6,13 @@ import { setVideoData } from "../store/reducer/movieReducer";
 import { fetchVideoData } from "../commonFunction/movieApiFunction";
 import { MutatingDots } from "react-loader-spinner";
 import { FaPlayCircle } from "react-icons/fa";
-
+import Modal from "react-modal";
+import ReactPlayer from "react-player";
 function VideoList() {
   const param = useParams();
   const navigate = useNavigate();
   const id = param.id;
   const videoData = useSelector((state) => state.movieSlice.videoData.results);
-  console.log(videoData, "video");
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -46,13 +46,13 @@ function VideoList() {
           />
         </div>
       ) : (
-        <div className="row">
-          <div className="col-md-6">
-            <h5 className="text-center">Teaser</h5>
-            {videoData.some((item) => item.type === "Teaser") ? (
-              videoData
-                .filter((item) => item.type === "Teaser")
-                .map((item) => (
+        <div className="row ">
+          <h5 className="mt-3 ">Trailer</h5>
+          {videoData.some((item) => item.type == "Trailer") ? (
+            videoData
+              .filter((item) => item.type == "Trailer")
+              .map((item) => (
+                <div className="col-md-3 ">
                   <div
                     key={item.key}
                     className="image-wrapper"
@@ -71,19 +71,19 @@ function VideoList() {
                       <FaPlayCircle />
                     </div>
                   </div>
-                ))
-            ) : (
-              <div className="text-center">
-                <h6>No Teaser Available</h6>
-              </div>
-            )}
-          </div>
-          <div className="col-md-6">
-            <h5 className="text-center">Trailer</h5>
-            {videoData.some((item) => item.type === "Trailer") ? (
-              videoData
-                .filter((item) => item.type === "Trailer")
-                .map((item) => (
+                </div>
+              ))
+          ) : (
+            <div className="text-center mb-5">
+              <h6>No Teaser Available</h6>
+            </div>
+          )}
+          <h5 className="">Teaser</h5>
+          {videoData.some((item) => item.type == "Teaser") ? (
+            videoData
+              .filter((item) => item.type == "Teaser")
+              .map((item) => (
+                <div className="col-md-3 ">
                   <div
                     key={item.key}
                     className="image-wrapper"
@@ -102,36 +102,128 @@ function VideoList() {
                       <FaPlayCircle />
                     </div>
                   </div>
-                ))
-            ) : (
-              <div className="text-center">
-                <h6>No Trailer Available</h6>
-              </div>
-            )}
-          </div>
+                </div>
+              ))
+          ) : (
+            <div className="text-center mb-5">
+              <h6>No Teaser Available</h6>
+            </div>
+          )}
+          <h5 className="">Featurette</h5>
+          {videoData.some((item) => item.type == "Featurette") ? (
+            videoData
+              .filter((item) => item.type == "Featurette")
+              .map((item) => (
+                <div className="col-md-3 ">
+                  <div
+                    key={item.key}
+                    className="image-wrapper"
+                    onClick={() => openModal(item.key)}
+                  >
+                    <img
+                      src={
+                        item.key
+                          ? `https://img.youtube.com/vi/${item.key}/hqdefault.jpg`
+                          : "http://localhost:5173/images/404-img.jpg"
+                      }
+                      alt="Video Thumbnail"
+                      className="video-thumbnail"
+                    />
+                    <div className="play-button-overlay">
+                      <FaPlayCircle />
+                    </div>
+                  </div>
+                </div>
+              ))
+          ) : (
+            <div className="text-center mb-5">
+              <h6>No Featurette Available</h6>
+            </div>
+          )}
+
+          <h5 className="">Behind the Scenes</h5>
+          {videoData.some((item) => item.type == "Behind the Scenes") ? (
+            videoData
+              .filter((item) => item.type == "Behind the Scenes")
+              .map((item) => (
+                <div className="col-md-3">
+                  <div
+                    key={item.key}
+                    className="image-wrapper"
+                    onClick={() => openModal(item.key)}
+                  >
+                    <img
+                      src={
+                        item.key
+                          ? `https://img.youtube.com/vi/${item.key}/hqdefault.jpg`
+                          : "http://localhost:5173/images/404-img.jpg"
+                      }
+                      alt="Video Thumbnail"
+                      className="video-thumbnail"
+                    />
+                    <div className="play-button-overlay">
+                      <FaPlayCircle />
+                    </div>
+                  </div>
+                </div>
+              ))
+          ) : (
+            <div className="text-center mb-5">
+              <h6>No Behind the Scenes Available</h6>
+            </div>
+          )}
+          <h5 className="">Clip</h5>
+          {videoData.some((item) => item.type == "Clip") ? (
+            videoData
+              .filter((item) => item.type == "Clip")
+              .map((item) => (
+                <div className="col-md-3 ">
+                  <div
+                    key={item.key}
+                    className="image-wrapper"
+                    onClick={() => openModal(item.key)}
+                  >
+                    <img
+                      src={
+                        item.key
+                          ? `https://img.youtube.com/vi/${item.key}/hqdefault.jpg`
+                          : "http://localhost:5173/images/404-img.jpg"
+                      }
+                      alt="Video Thumbnail"
+                      className="video-thumbnail"
+                    />
+                    <div className="play-button-overlay">
+                      <FaPlayCircle />
+                    </div>
+                  </div>
+                </div>
+              ))
+          ) : (
+            <div className="text-center mb-5">
+              <h6>No Clip Available</h6>
+            </div>
+          )}
         </div>
       )}
       <Modal
         isOpen={selectedVideoKey !== null && isModalOpen}
         onRequestClose={closeModal}
-        className="image-modal"
-        overlayClassName="image-overlay"
+        className="video-modal"
+        overlayClassName="video-overlay"
         appElement={document.getElementById("root")}
       >
         <div className="modal-content">
-          {/* <button className="close-modal-btn" onClick={closeModal}>
-            Close
-          </button> */}
           {selectedVideoKey && (
-            <iframe
-              width="100%"
-              height="215px"
-              src={`https://www.youtube.com/embed/${selectedVideoKey}?autoplay=1`}
-              frameBorder="0"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              title="Video"
-            ></iframe>
+            <div className="player-wrapper">
+              <ReactPlayer
+                playing
+                controls
+                width="100%"
+                height="100%"
+                className="react-player"
+                url={`https://www.youtube.com/embed/${selectedVideoKey}?autoplay=1`}
+              />
+            </div>
           )}
         </div>
       </Modal>

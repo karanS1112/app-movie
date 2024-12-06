@@ -40,8 +40,8 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #ffffffa9;
-    text-shadow: 2px 2px 8px rgba(182, 171, 16, 0.7);
+    color: #ffffffe3;
+    text-shadow: 2px 2px 8px rgba(192, 23, 23, 0.7);
     text-align: center;
 }
 
@@ -50,8 +50,8 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #ffc107a2;
-    text-shadow: 2px 2px 8px rgba(143, 139, 139, 0.7);
+    color: #bebebe98;
+    text-shadow: 2px 2px 8px rgba(122, 122, 122, 0.575);
     text-align: center;
 }
 
@@ -179,12 +179,6 @@ body {
     transform: scale(1.05);
 }
 
-.card {
-    /* border: none;
-    border-radius: 50px;
-    overflow: hidden;
-    transition: box-shadow 0.3s ease-in-out; */
-}
 
 .card:hover {
     box-shadow: rgba(255, 193, 7, 0.1) 9px -2px 6px 2px, rgba(250, 233, 183, 0.6) 5px 6px 5px -2px
@@ -203,42 +197,49 @@ body {
     display: flex;
     position: absolute;
     bottom: 125px;
-    right: 10px;
+    right:6px;
 }
 
 .circular-progress {
     position: relative;
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #000000ab;
+    background-color: #030303ab;
     border-radius: 50%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   
 }
 
 .progress-circle {
     width: 100%;
     height: 100%;
-    transform: rotate(70deg);
+    /* transform: rotate(80deg); */
+    animation: rotateCircle 2s linear infinite;
+    /* animation: progress 1s ease-out forwards; */
     
 }
 
 .circle-bg {
     fill: none;
     stroke: #e0e0e0;
-    stroke-width: 3.9;
+    stroke-width: 1.9;
 }
 
 .circle-progress {
     fill: none;
     stroke: #ffbb00;
-    stroke-width: 3.9;
+    stroke-width: 2.9;
     stroke-linecap: round;
-    transition: stroke-dasharray 0.s ease-in-out;
+    animation: progress 2.5s ease-out forwards;
 }
-
+@keyframes progress {
+    0% {
+      stroke-dasharray: 0 100;
+    }
+  }
 .progress-percentage {
     position: absolute;
     font-size: 0.699rem;
@@ -579,7 +580,7 @@ body {
   .player-wrapper {
     flex: 1;
     position: relative;
-    padding-top: 56.25%; /* Aspect ratio 16:9 */
+    padding-top: 56.25%; 
   }
   
   .react-player {
@@ -589,20 +590,3 @@ body {
     width: 100%;
     height: 100%;
   }
-  
-  /* Close button styling */
-  .close-modal-btn {
-    background: #f44336;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    align-self: flex-end;
-    margin: 10px;
-    border-radius: 5px;
-  }
-  
-  .close-modal-btn:hover {
-    background: #d32f2f;
-  }
-  

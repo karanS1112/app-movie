@@ -108,6 +108,7 @@ const MovieDetail = () => {
                     title={item.title}
                     onClick={openModal}
                   />
+                  
                 </div>
               </div>
               <div className="col-md-9">

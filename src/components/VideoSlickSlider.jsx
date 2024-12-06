@@ -18,8 +18,17 @@ function VideoSlickSlider() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const displayedVideoData = videoData?.results
-    ? [...videoData.results.slice(0, 6), { id: "view-more" }]
-    : [];
+  ? [
+      ...videoData.results
+        .filter(
+          (video) =>
+            video.type?.toLowerCase() === "trailer" ||
+            video.type?.toLowerCase() === "teaser"
+        )
+        .slice(0, 6), 
+      { id: "view-more" }, ]
+  : [];
+
 
   useEffect(() => {
     fetchVideoData(videoTrailer, setVideoData, dispatch, id, setLoading);
@@ -75,7 +84,7 @@ function VideoSlickSlider() {
   return (
     <div className="container">
       <div className="mt-4">
-        <h4>Video's</h4>
+        <h4>Teaser & Trailer</h4>
         {loading ? (
           <div className="justify-content-center min-vh-100">
             <MutatingDots

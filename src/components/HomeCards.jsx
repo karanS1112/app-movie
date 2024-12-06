@@ -55,10 +55,7 @@ const HomeCards = ({ movieData, loading, loadMoreMovies }) => {
           {movieData ? (
             movieData?.map((data, index) => (
               <div key={data.id} className="home-cards-wrap slick-track">
-                <div
-                  className="card text-white bg-white mb-3 shadow-card-box "
-                  // style={{ width: "17rem" }}
-                >
+                <div className="card text-white bg-white mb-3 shadow-card-box">
                   <img
                     src={
                       data.poster_path
@@ -76,10 +73,10 @@ const HomeCards = ({ movieData, loading, loadMoreMovies }) => {
                       to={`/movie/${data.id}`}
                       title={data.original_title ? data.original_title : "N/A"}
                     >
-                      <h6 className="text-truncate text-black">
+                      <h6 className="text-truncate text-black text-center">
                         {data.original_title ? data.original_title : "N/A"}
                       </h6>
-                      <p className="home-card-description text-black-50  ">
+                      <p className="home-card-description text-black-50 text-center">
                         {data.overview ? data.overview : "N/A"}
                       </p>
                     </Link>
@@ -111,6 +108,7 @@ const HomeCards = ({ movieData, loading, loadMoreMovies }) => {
                         </div>
                       </div>
                     </div>
+                    
                   </div>
                 </div>
               </div>

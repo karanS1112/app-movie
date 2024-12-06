@@ -46,7 +46,7 @@ function VideoList() {
           />
         </div>
       ) : (
-        <div className="row ">
+        <div className="row">
           <h5 className="mt-3 ">Trailer</h5>
           {videoData.some((item) => item.type == "Trailer") ? (
             videoData
@@ -54,7 +54,7 @@ function VideoList() {
               .map((item) => (
                 <div className="col-md-3 ">
                   <div
-                    key={item.key}
+                    key={item.id}
                     className="image-wrapper"
                     onClick={() => openModal(item.key)}
                   >
@@ -85,7 +85,7 @@ function VideoList() {
               .map((item) => (
                 <div className="col-md-3 ">
                   <div
-                    key={item.key}
+                    key={item.id}
                     className="image-wrapper"
                     onClick={() => openModal(item.key)}
                   >
@@ -109,14 +109,14 @@ function VideoList() {
               <h6>No Teaser Available</h6>
             </div>
           )}
-          <h5 className="">Featurette</h5>
+          <h5 className="mt-3 mb-0">Featurettes</h5>
           {videoData.some((item) => item.type == "Featurette") ? (
             videoData
               .filter((item) => item.type == "Featurette")
               .map((item) => (
                 <div className="col-md-3 ">
                   <div
-                    key={item.key}
+                    key={item.id}
                     className="image-wrapper"
                     onClick={() => openModal(item.key)}
                   >
@@ -141,14 +141,14 @@ function VideoList() {
             </div>
           )}
 
-          <h5 className="">Behind the Scenes</h5>
+          <h5 className="mt-3 mb-0">Behind the Scenes</h5>
           {videoData.some((item) => item.type == "Behind the Scenes") ? (
             videoData
               .filter((item) => item.type == "Behind the Scenes")
               .map((item) => (
                 <div className="col-md-3">
                   <div
-                    key={item.key}
+                    key={item.id}
                     className="image-wrapper"
                     onClick={() => openModal(item.key)}
                   >
@@ -172,7 +172,7 @@ function VideoList() {
               <h6>No Behind the Scenes Available</h6>
             </div>
           )}
-          <h5 className="">Clip</h5>
+          <h5 className="mt-3 mb-0">Clips</h5>
           {videoData.some((item) => item.type == "Clip") ? (
             videoData
               .filter((item) => item.type == "Clip")

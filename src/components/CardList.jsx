@@ -177,7 +177,7 @@ const CardList = ({ category }) => {
                           {movie?.title ? movie.title : "N/A"}
                         </h6>
                         <div className="card-list-rating-position">
-                          <span className="card-list-movie-rating">
+                          <span className="list-movie-rating">
                             {movie.vote_average
                               ? `${(movie.vote_average * 10).toFixed(0)}%`
                               : "N/A"}

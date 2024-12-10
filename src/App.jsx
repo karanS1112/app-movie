@@ -13,6 +13,7 @@ import MovieDetail from "./components/MovieDetail";
 import CastCrewList from "./components/CastCrewList";
 import CastCrewDetail from "./components/CastCrewDetail";
 import VideoList from "./components/VideoList";
+import Search from "./components/Search";
 
 function App() {
   const router = createBrowserRouter([
@@ -62,6 +63,10 @@ function App() {
         {
           path: `/movie/video-list/:id`,
           element: <VideoList />,
+        },
+          {
+          path: `/movie/search/:query`,
+          element: <Search />,
         },
         {
           path: "*",

@@ -1,7 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import Search from "./Search";
 
-const Header = () => {
+const Header = (props) => {
+  console.log(props, "props");
+
+  const { handleOnChange, handleSearchSubmit, searchTerm } = props;
+
   return (
     <header className="p-3 text-bg-dark sticky-sm-top">
       <div className="container">
@@ -97,17 +102,7 @@ const Header = () => {
             </li>
           </ul>
 
-          <form
-            className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
-            role="search"
-          >
-            <input
-              type="search"
-              className="form-control form-control-dark"
-              placeholder="Search..."
-              aria-label="Search"
-            />
-          </form>
+          <Search />
 
           {/* <div className="text-end">
             <button type="button" className="btn btn-outline-light me-2">

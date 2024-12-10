@@ -23,9 +23,12 @@ const MovieDetail = () => {
   const item = selector.movieSlice.movieDetail;
   // const imageUri = "https://image.tmdb.org/t/p/w300_and_h450_bestv2";
   const imageUri = "https://media.themoviedb.org/t/p/w220_and_h330_face";
+  // /t/p/w600_and_h900_bestv2/aosm8NMQ3UyoBVpSxyimorCQykC.jpg
   // const orginalImgPoster = "https://image.tmdb.org/t/p/original/";
-  const orginalImgPoster="https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces"
+  const orginalImgPoster =
+    "https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces";
   const backgroundImage = orginalImgPoster + item.poster_path;
+  const modalImg= 'https://media.themoviedb.org/t/p/w600_and_h900_bestv2'
 
   const runtimeInMinutes = item.runtime;
   const hours = Math.floor(runtimeInMinutes / 60);
@@ -40,7 +43,7 @@ const MovieDetail = () => {
   var month = release_date.getMonth() + 1;
   var date = release_date.getDate();
   const release = date + "/" + month + "/" + year;
-  
+
   const movieDetailStyle = {
     backgroundImage: `linear-gradient(rgba(0 0 0 / 79%), rgba(157, 18, 151, 0.2)), url("${backgroundImage}")`,
     backgroundSize: "cover",
@@ -90,9 +93,9 @@ const MovieDetail = () => {
       ) : (
         <div className="movieDetail" style={movieDetailStyle}>
           <div className="container">
-            <div className="row">
-              <div className="col-md-3">
-                <div className="card shadow-card-box detail-card-poster  m-4">
+            <div className="row align-items-md-start">
+              <div className="col-10 col-sm-6 col-md-4 col-lg-3">
+                <div className="card shadow-card-box    mt-3">
                   <img
                     src={
                       selector.movieSlice.movieDetail.backdrop_path
@@ -108,7 +111,6 @@ const MovieDetail = () => {
                     title={item.title}
                     onClick={openModal}
                   />
-                  
                 </div>
               </div>
               <div className="col-md-9">
@@ -129,7 +131,7 @@ const MovieDetail = () => {
                   <div className="col-auto detail-icon-color">
                     <FiWatch size={20} />
                   </div>
-                  <div className="col p-0 pt-1">
+                  <div className="col-md-11 col-sm-6 p-0 pt-2">
                     <h6>
                       {" "}
                       {formattedRuntime ? formattedRuntime : "N/A"} (
@@ -141,7 +143,7 @@ const MovieDetail = () => {
                   <div className="col-auto detail-icon-color">
                     <TfiMoney size={20} />
                   </div>
-                  <div className="col p-0 pt-1">
+                  <div className="col-md-11 col-sm-6 p-0 pt-2">
                     <h6>{budget ? budget : "N/A"} (Budget)</h6>
                   </div>
                 </div>
@@ -149,32 +151,25 @@ const MovieDetail = () => {
                   <div className="col-auto detail-icon-color">
                     <GiMoneyStack size={20} />
                   </div>
-                  <div className="col p-0 pt-1">
+                  <div className="col-md-11 col-sm-6 p-0 pt-2">
                     <h6>{revenue ? revenue : "N/A"} (Revenue)</h6>
                   </div>
                 </div>
+
                 <div className="row">
                   <div className="col-auto detail-icon-color">
                     <LuCalendarDays size={20} />
                   </div>
-                  <div className="col-1 p-0 pt-1">
-                    <h6>{release} </h6>
-                  </div>
-                  <div className="col pt-1">
-                    {item.genres?.length > 0 ? (
-                      <h6 className="ps-3">
-                        ({item.origin_country.map((data) => data).join(", ")}){" "}
-                      </h6>
-                    ) : (
-                      <p>N/A</p>
-                    )}
+                  <div className="col-md-11 col-sm-6 p-0 pt-2">
+                    <h6>{release ? release : "N/A"} ({item.origin_country ? item.origin_country.map((data) => data).join(", "): "N/A"}) </h6>
                   </div>
                 </div>
+
                 <div className="row">
                   <div className="col-auto detail-icon-color">
                     <BiSolidCameraMovie />
                   </div>
-                  <div className="col p-0 pt-1">
+                  <div className="col-md-11 col-sm-6 p-0 pt-2">
                     <h6>{item.status ? item.status : "N/A"}</h6>
                   </div>
                 </div>
@@ -182,7 +177,7 @@ const MovieDetail = () => {
                   <div className="col-auto detail-icon-color">
                     <FaRegStar />
                   </div>
-                  <div className="col p-0 pt-1">
+                  <div className="col-md-11 col-sm-6 p-0 pt-2">
                     <h6>
                       {item?.vote_average
                         ? item.vote_average.toFixed(1)
@@ -202,7 +197,7 @@ const MovieDetail = () => {
         </div>
       )}
       <CastCrewSlickSlider />
-      <VideoSlickSlider/>
+      <VideoSlickSlider />
       <Modal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
@@ -214,7 +209,7 @@ const MovieDetail = () => {
             className="modal-image"
             src={
               selector.movieSlice.movieDetail.backdrop_path
-                ? `${imageUri}${item.backdrop_path}`
+                ? `${modalImg}${item.backdrop_path}`
                 : "http://localhost:5173/images/404-img.jpg"
             }
             alt={selector.name}

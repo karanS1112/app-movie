@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SectionHeading from "./SectionHeading";
 import HomeCards from "./HomeCards";
-// import { formatMovieList, movieLists } from "./Home/feature";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setNowPlaying,
@@ -10,7 +9,6 @@ import {
   setUpcoming,
 } from "../store/reducer/movieReducer";
 import { MutatingDots } from "react-loader-spinner";
-import toast from "react-hot-toast";
 import { fetchMovieData } from "../commonFunction/movieApiFunction";
 import {
   NowPlayingMovieDataApi,

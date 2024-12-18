@@ -16,7 +16,7 @@ function Search() {
   };
 
   const handleSearchSubmit = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     searchApi();
   };
 
@@ -30,12 +30,12 @@ function Search() {
   };
 
   const handleMovieClick = (movieId) => {
-    console.log("Navigating to movie ID:", movieId);
+    setSearchTerm("");
     navigate(`/movie/${movieId}`);
   };
 
   return (
-    <div  className="search-container">
+    <div className="search-container">
       <form
         className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
         role="search"
@@ -44,7 +44,7 @@ function Search() {
         <input
           type="text"
           className="form-control form-control-dark"
-          placeholder="Search..."
+          placeholder="Movie Search..."
           aria-label="Search"
           value={searchTerm}
           onChange={handleOnChange}
@@ -55,7 +55,7 @@ function Search() {
           {selector.map((movie) => (
             <div
               key={movie.id}
-              className="search-result-item text-truncate-3 list-wrap"
+              className="search-result-item text-truncate-3 list-wrap p-1 "
               onClick={() => handleMovieClick(movie.id)}
             >
               {movie.title}

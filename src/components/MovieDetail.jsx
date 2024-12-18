@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { castCrewMovie, dataMovie } from "../api/movieApiList";
-import { setCastCrew, setMovieDetail } from "../store/reducer/movieReducer";
+import { dataMovie } from "../api/movieApiList";
+import { setMovieDetail } from "../store/reducer/movieReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { FiWatch } from "react-icons/fi";
 import { TfiMoney } from "react-icons/tfi";
@@ -10,7 +10,6 @@ import { BiSolidCameraMovie } from "react-icons/bi";
 import { GiMoneyStack } from "react-icons/gi";
 import { FaRegStar } from "react-icons/fa";
 import { MutatingDots } from "react-loader-spinner";
-import Slider from "react-slick";
 import CastCrewSlickSlider from "./CastCrewSlickSlider";
 import Modal from "react-modal";
 import VideoSlickSlider from "./VideoSlickSlider";
@@ -28,7 +27,7 @@ const MovieDetail = () => {
   const orginalImgPoster =
     "https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces";
   const backgroundImage = orginalImgPoster + item.poster_path;
-  const modalImg= 'https://media.themoviedb.org/t/p/w600_and_h900_bestv2'
+  const modalImg = "https://media.themoviedb.org/t/p/w600_and_h900_bestv2";
 
   const runtimeInMinutes = item.runtime;
   const hours = Math.floor(runtimeInMinutes / 60);
@@ -161,7 +160,13 @@ const MovieDetail = () => {
                     <LuCalendarDays size={20} />
                   </div>
                   <div className="col-md-11 col-sm-6 p-0 pt-2">
-                    <h6>{release ? release : "N/A"} ({item.origin_country ? item.origin_country.map((data) => data).join(", "): "N/A"}) </h6>
+                    <h6>
+                      {release ? release : "N/A"} (
+                      {item.origin_country
+                        ? item.origin_country.map((data) => data).join(", ")
+                        : "N/A"}
+                      ){" "}
+                    </h6>
                   </div>
                 </div>
 

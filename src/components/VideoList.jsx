@@ -75,7 +75,7 @@ function VideoList() {
               ))
           ) : (
             <div className="text-center mb-5">
-              <h6>No Teaser Available</h6>
+              <h6>No Trailer Available</h6>
             </div>
           )}
           <h5 className="">Teaser</h5>

@@ -17,12 +17,8 @@ const Home = () => {
   return (
     <>
       <ScrollContainer>
-        {/* <ScrollPage> */}
-          {/* <Animator animation={MoveOut(-1000, 1000)}> */}
           <motion.div className="progress-bar" style={{ scaleX }} />
             <Banner />
-          {/* </Animator> */}
-        {/* </ScrollPage> */}
       </ScrollContainer>
 
       <MovieHeading />

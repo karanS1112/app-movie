@@ -33,6 +33,7 @@ function VideoSlickSlider() {
   useEffect(() => {
     fetchVideoData(videoTrailer, setVideoData, dispatch, id, setLoading);
   }, [id]);
+  // this is id  passed  bcz of search
 
   const handleViewMoreClick = () => {
     navigate(`/movie/video-list/${id}`);

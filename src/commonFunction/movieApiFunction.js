@@ -27,6 +27,7 @@ export const fetchCastCrewData = async(castCrewMovie,setCastCrew,dispatch,id,set
         setLoading(false);
       }, 2000);
     } catch (error) {
+      toast.error("Cast Data is not fetching");
       console.error(error);
     }
 }
@@ -40,6 +41,7 @@ export const fetchVideoData = async(castCrewMovie,setCastCrew,dispatch,id,setLoa
       setLoading(false);
     }, 2000);
   } catch (error) {
+    toast.error("Video Data is not fetching");
     console.error(error);
   }
 }

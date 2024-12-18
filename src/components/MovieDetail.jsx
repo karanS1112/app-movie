@@ -58,7 +58,7 @@ const MovieDetail = () => {
     getMovieDetails();
     // window.scrollTo(0, 0);
     window.scrollTo(0, 0);
-  }, []);
+  }, [id]);
 
   const getMovieDetails = async () => {
     await dataMovie(id)

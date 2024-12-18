@@ -32,7 +32,7 @@ function VideoSlickSlider() {
 
   useEffect(() => {
     fetchVideoData(videoTrailer, setVideoData, dispatch, id, setLoading);
-  }, []);
+  }, [id]);
 
   const handleViewMoreClick = () => {
     navigate(`/movie/video-list/${id}`);

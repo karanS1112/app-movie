@@ -17,7 +17,7 @@ function CastCrewSlickSlider() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     fetchCastCrewData(castCrewMovie, setCastCrew, dispatch, id, setLoading);
-  }, []);
+  }, [id]);
 
   const handleViewMoreClick = () => {
     navigate(`/movie/cast-crew/${id}`);

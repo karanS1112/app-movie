@@ -1,38 +1,41 @@
-import axios from "axios";
 import React, { useState } from "react";
-import { searchMovieApi } from "../api/movieApiList";
 import { useDispatch, useSelector } from "react-redux";
-import { setSearchData } from "../store/reducer/movieReducer";
 import { useNavigate } from "react-router-dom";
+import { searchMovieApi } from "../api/movieApiList";
+import { setSearchData } from "../store/reducer/movieReducer";
 
 function Search() {
   const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
   const selector = useSelector((state) => state.movieSlice.searchData);
   const navigate = useNavigate();
+
   const handleOnChange = (e) => {
     setSearchTerm(e.target.value);
     searchApi();
   };
 
   const handleSearchSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault(); 
     searchApi();
   };
+
   const searchApi = async () => {
-    await searchMovieApi(searchTerm)
-      .then((res) => {
-        console.log(res.data.results, "fff");
-        dispatch(setSearchData(res.data.results));
-        // setTimeout(() => setLoading(false), 1000);
-      })
-      .catch(console.error);
+    try {
+      const res = await searchMovieApi(searchTerm);
+      dispatch(setSearchData(res.data.results));
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+    }
   };
+
   const handleMovieClick = (movieId) => {
+    console.log("Navigating to movie ID:", movieId);
     navigate(`/movie/${movieId}`);
   };
+
   return (
-    <div className="">
+    <div  className="search-container">
       <form
         className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
         role="search"
@@ -44,20 +47,22 @@ function Search() {
           placeholder="Search..."
           aria-label="Search"
           value={searchTerm}
-          onChange={(e) => handleOnChange(e)}
+          onChange={handleOnChange}
         />
       </form>
-      <div className="search-results mt-3 position-absolute bg-danger tb-3 mt-md-1  mt-sm-2 text-truncate">
-        {selector.map((movie) => (
-          <div
-            key={movie.id}
-            className="search-result-item text-truncate-3"
-            onClick={() => handleMovieClick(movie.id)}
-          >
-            {movie.title}
-          </div>
-        ))}
-      </div>
+      {searchTerm.length >= 3 && (
+        <div className="search-results mt-3 position-absolute text-truncate wrap-word">
+          {selector.map((movie) => (
+            <div
+              key={movie.id}
+              className="search-result-item text-truncate-3 list-wrap"
+              onClick={() => handleMovieClick(movie.id)}
+            >
+              {movie.title}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

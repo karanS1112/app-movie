@@ -52,9 +52,9 @@ function CastCrewList() {
           />
         </div>
       ) : (
-        <div className="row">
+        <div className="row align-items-start">
           <div className="col-md-6 mt-3">
-            <h4>Cast</h4>
+            <h4 className="text-white">Cast</h4>
             {castCrewList?.cast?.length > 0 ? (
               castCrewList.cast.map((item, index) => (
                 <Link

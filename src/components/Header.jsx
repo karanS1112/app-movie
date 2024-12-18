@@ -3,10 +3,6 @@ import { NavLink } from "react-router-dom";
 import Search from "./Search";
 
 const Header = (props) => {
-  console.log(props, "props");
-
-  const { handleOnChange, handleSearchSubmit, searchTerm } = props;
-
   return (
     <header className="p-3 text-bg-dark sticky-sm-top">
       <div className="container">

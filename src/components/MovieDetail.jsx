@@ -126,70 +126,75 @@ const MovieDetail = () => {
                 ) : (
                   <p>N/A</p>
                 )}
-                <div className="row">
-                  <div className="col-auto detail-icon-color">
-                    <FiWatch size={20} />
-                  </div>
-                  <div className="col-md-11 col-sm-6 p-0 pt-2">
-                    <h6>
-                      {" "}
-                      {formattedRuntime ? formattedRuntime : "N/A"} (
-                      {item?.runtime ? `${item.runtime} Minutes` : "N/A"})
-                    </h6>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-auto detail-icon-color">
-                    <TfiMoney size={20} />
-                  </div>
-                  <div className="col-md-11 col-sm-6 p-0 pt-2">
-                    <h6>{budget ? budget : "N/A"} (Budget)</h6>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-auto detail-icon-color">
-                    <GiMoneyStack size={20} />
-                  </div>
-                  <div className="col-md-11 col-sm-6 p-0 pt-2">
-                    <h6>{revenue ? revenue : "N/A"} (Revenue)</h6>
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="col-auto detail-icon-color">
-                    <LuCalendarDays size={20} />
-                  </div>
-                  <div className="col-md-11 col-sm-6 p-0 pt-2">
-                    <h6>
-                      {release ? release : "N/A"} (
-                      {item.origin_country
-                        ? item.origin_country.map((data) => data).join(", ")
-                        : "N/A"}
-                      ){" "}
-                    </h6>
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="col-auto detail-icon-color">
-                    <BiSolidCameraMovie />
-                  </div>
-                  <div className="col-md-11 col-sm-6 p-0 pt-2">
-                    <h6>{item.status ? item.status : "N/A"}</h6>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-auto detail-icon-color">
-                    <FaRegStar />
-                  </div>
-                  <div className="col-md-11 col-sm-6 p-0 pt-2">
-                    <h6>
-                      {item?.vote_average
-                        ? item.vote_average.toFixed(1)
-                        : "N/A"}
-                    </h6>
-                  </div>
-                </div>
+                <ul className="list-unstyled">
+                  <li className="d-flex align-items-center mb-2">
+                    <div className="detail-icon-color me-2">
+                      <FiWatch size={20} />
+                    </div>
+                    <div>
+                      <h6 className="m-0">
+                        {formattedRuntime ? formattedRuntime : "N/A"} (
+                        {item?.runtime ? `${item.runtime} Minutes` : "N/A"})
+                      </h6>
+                    </div>
+                  </li>
+                  <li className="d-flex align-items-center mb-2">
+                    <div className="detail-icon-color me-2">
+                      <TfiMoney size={20} />
+                    </div>
+                    <div>
+                      <h6 className="m-0">
+                        {budget ? budget : "N/A"} (Budget)
+                      </h6>
+                    </div>
+                  </li>
+                  <li className="d-flex align-items-center mb-2">
+                    <div className="detail-icon-color me-2">
+                      <GiMoneyStack size={20} />
+                    </div>
+                    <div>
+                      <h6 className="m-0">
+                        {revenue ? revenue : "N/A"} (Revenue)
+                      </h6>
+                    </div>
+                  </li>
+                  <li className="d-flex align-items-center mb-2">
+                    <div className="detail-icon-color me-2">
+                      <LuCalendarDays size={20} />
+                    </div>
+                    <div>
+                      <h6 className="m-0">
+                        {release ? release : "N/A"} (
+                        {item.origin_country
+                          ? item.origin_country.map((data) => data).join(", ")
+                          : "N/A"}
+                        )
+                      </h6>
+                    </div>
+                  </li>
+                  <li className="d-flex align-items-center mb-2">
+                    <div className="detail-icon-color me-2">
+                      <BiSolidCameraMovie size={20} />
+                    </div>
+                    <div>
+                      <h6 className="m-0">
+                        {item.status ? item.status : "N/A"}
+                      </h6>
+                    </div>
+                  </li>
+                  <li className="d-flex align-items-center mb-2">
+                    <div className="detail-icon-color me-2">
+                      <FaRegStar size={20} />
+                    </div>
+                    <div>
+                      <h6 className="m-0">
+                        {item?.vote_average
+                          ? item.vote_average.toFixed(1)
+                          : "N/A"}
+                      </h6>
+                    </div>
+                  </li>
+                </ul>
                 <div className="card p-0 m-4 detail-card-overview">
                   <div className="card-body">
                     <h3 className="text-white text-truncate"> Overview</h3>

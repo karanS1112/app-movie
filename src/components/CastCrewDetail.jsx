@@ -78,14 +78,18 @@ const CastCrewDetail = () => {
         </div>
       ) : (
         <motion.div
-          className="cast-crew-detail-content"
+          className="cast-crew-detail-content d-flex flex-column flex-md-row"
           initial="hidden"
           animate="visible"
           variants={containerVariants}
         >
-          <motion.div className="image-container" variants={fadeInVariants}>
+          {/* Image Container */}
+          <motion.div
+            className="image-container  text-md-start mb-3 mb-md-0"
+            variants={fadeInVariants}
+          >
             <img
-              className="profile-image"
+              className="profile-image img-fluid rounded"
               src={
                 selector.profile_path
                   ? `${imageUri + selector.profile_path}`
@@ -97,8 +101,12 @@ const CastCrewDetail = () => {
             />
           </motion.div>
 
-          <motion.div className="details-container" variants={fadeInLeft}>
-            <h2>
+          {/* Details Container */}
+          <motion.div
+            className="details-container px-3 px-md-4"
+            variants={fadeInLeft}
+          >
+            <h2 className="text-md-start">
               {selector.name} ({new Date(selector.birthday).getFullYear()})
             </h2>
             <div className="personal-info">

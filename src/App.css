@@ -314,7 +314,7 @@ body {
 }
 
 .card-list-movie-img-size {
-    height: 300px;
+    height: 350px;
     width: 100% !important;
 }
 
@@ -483,9 +483,9 @@ h2 {
     /*top: 90px; */
     left: 0;
     right: 0;
-    height: 10px !important;
+    height: 5px !important;
     background: #ffc107a2 !important;
-    transform-origin: 0%;
+    /* transform-origin: 0%; */
     z-index: 9999 !important;
 }
 

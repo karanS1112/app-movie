@@ -152,7 +152,7 @@ const CardList = ({ category }) => {
           <div className="row">
             {matchingCategory?.data?.results?.length > 0 ? (
               matchingCategory.data.results.map((movie, index) => (
-                <div className="col-sm-3 pt-2 pb-1 pe-1" key={index}>
+                <div className="col-sm-3 p-2 pt-3 " key={index}>
                   <div className="card shadow-card-box">
                     <Link
                       style={{ textDecorationColor: "transparent" }}

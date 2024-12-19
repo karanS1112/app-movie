@@ -43,7 +43,7 @@ function Search() {
       >
         <input
           type="text"
-          className="form-control form-control-dark"
+          className="form-control form-control-dark search-input"
           placeholder="Movie Search..."
           aria-label="Search"
           value={searchTerm}

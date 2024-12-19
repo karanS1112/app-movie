@@ -783,3 +783,27 @@ h2 {
 .video-slick .slick-next {
     right: -17px !important;
 }
+.animation-hader-menu{
+    -ms-zoom-animation: initial;
+
+}
+.animation-hader-menu .nav-link {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.animation-hader-menu .nav-link:hover {
+    transform: scale(1.2); 
+    margin: 5px;
+    color: #ffc107 !important;
+}
+
+.animation-hader-menu .nav-link.active {
+    transform: scale(1.3); 
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    color: #ffc107 !important;
+}
+
+.search-input:focus{
+    transform: scale(1.1); 
+}

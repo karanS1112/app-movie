@@ -14,7 +14,6 @@ const About = () => {
     <div className={`about-page ${isVisible ? 'fade-in' : ''}`}>
       <h1 className="title">About Us</h1>
       <div className="row">
-        {/* Left Column - Image */}
         <div className={`col left ${isVisible ? 'slide-in-left' : ''}`}>
           <img
             src="./images/about.jpg"
@@ -23,7 +22,6 @@ const About = () => {
           />
         </div>
 
-        {/* Right Column - Text */}
         <div className={`col right ${isVisible ? 'slide-in-right' : ''}`}>
           <div className="content">
             <p className="description">

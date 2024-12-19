@@ -62,7 +62,7 @@ function VideoList() {
                       src={
                         item.key
                           ? `https://img.youtube.com/vi/${item.key}/hqdefault.jpg`
-                          : "http://localhost:5173/images/404-img.jpg"
+                          : "/images/404-img.jpg"
                       }
                       alt="Video Thumbnail"
                       className="video-thumbnail"
@@ -93,7 +93,7 @@ function VideoList() {
                       src={
                         item.key
                           ? `https://img.youtube.com/vi/${item.key}/hqdefault.jpg`
-                          : "http://localhost:5173/images/404-img.jpg"
+                          : "/images/404-img.jpg"
                       }
                       alt="Video Thumbnail"
                       className="video-thumbnail"

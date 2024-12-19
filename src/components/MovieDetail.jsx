@@ -99,7 +99,7 @@ const MovieDetail = () => {
                     src={
                       selector.movieSlice.movieDetail.backdrop_path
                         ? `${imageUri}${item.backdrop_path}`
-                        : "http://localhost:5173/images/404-img.jpg"
+                        : "/images/404-img.jpg"
                     }
                     className="card-img-top detail-movie-img-size"
                     alt={
@@ -220,7 +220,7 @@ const MovieDetail = () => {
             src={
               selector.movieSlice.movieDetail.backdrop_path
                 ? `${modalImg}${item.backdrop_path}`
-                : "http://localhost:5173/images/404-img.jpg"
+                : "/images/404-img.jpg"
             }
             alt={selector.name}
           />

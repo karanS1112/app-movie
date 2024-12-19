@@ -191,7 +191,9 @@ body {
     object-fit: cover;
     border-bottom: 3px solid #c2bdbd;
 }
-
+.home-movie-img-size:hover {
+    transform: scale(1.02);
+}
 .card-body {
     padding: 15px;
 }
@@ -477,8 +479,8 @@ h2 {
 
 /* scroll progress bar */
 .progress-bar {
-    position: fixed;
-    top: 90px;
+     position: fixed;
+    /*top: 90px; */
     left: 0;
     right: 0;
     height: 10px !important;

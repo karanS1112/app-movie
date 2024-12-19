@@ -55,59 +55,61 @@ const HomeCards = ({ movieData, loading, loadMoreMovies }) => {
             movieData?.map((data, index) => (
               <div key={data.id} className="home-cards-wrap slick-track">
                 <div className="card text-white bg-white mb-3 shadow-card-box">
-                  <img
-                    src={
-                      data.poster_path
-                        ? `${imageUri}${data.poster_path}`
-                        : "./images/404-img.jpg"
-                    }
-                    className="card-img-top home-movie-img-size"
-                    alt={
-                      data.poster_path ? "Movie poster" : "Image not available"
-                    }
-                  />
-                  <div className="card-body">
-                    <Link
-                      style={{ textDecorationColor: "transparent" }}
-                      to={`/movie/${data.id}`}
-                      title={data.original_title ? data.original_title : "N/A"}
-                    >
+                  <Link
+                    style={{ textDecorationColor: "transparent" }}
+                    to={`/movie/${data.id}`}
+                    title={data.original_title ? data.original_title : "N/A"}
+                  >
+                    <img
+                      src={
+                        data.poster_path
+                          ? `${imageUri}${data.poster_path}`
+                          : "/images/404-img.jpg"
+                      }
+                      className="card-img-top home-movie-img-size"
+                      alt={
+                        data.poster_path
+                          ? "Movie poster"
+                          : "Image not available"
+                      }
+                    />
+                    <div className="card-body">
                       <h6 className="text-truncate text-black text-center">
                         {data.original_title ? data.original_title : "N/A"}
                       </h6>
                       <p className="home-card-description text-black-50 text-center">
                         {data.overview ? data.overview : "N/A"}
                       </p>
-                    </Link>
-                    <div className="home-rating-position">
-                      <div className="circular-progress">
-                        <svg className="progress-circle" viewBox="0 0 36 36">
-                          <path
-                            className="circle-bg"
-                            d="M18 2.0845
+                      <div className="home-rating-position">
+                        <div className="circular-progress">
+                          <svg className="progress-circle" viewBox="0 0 36 36">
+                            <path
+                              className="circle-bg"
+                              d="M18 2.0845
                             a 15.9155 15.9155 0 1 1 0 31.831
                             a 15.9155 15.9155 0 1 1 0 -31.831"
-                          />
-                          <path
-                            className="circle-progress"
-                            d="M18 2.0845
+                            />
+                            <path
+                              className="circle-progress"
+                              d="M18 2.0845
                             a 15.9155 15.9155 0 1 1 0 31.831
                             a 15.9155 15.9155 0 1 1 0 -31.831"
-                            style={{
-                              strokeDasharray: `${
-                                data.vote_average ? data.vote_average * 10 : 0
-                              }, 100`,
-                            }}
-                          />
-                        </svg>
-                        <div className="progress-percentage">
-                          {data.vote_average
-                            ? `${(data.vote_average * 10).toFixed(0)}%`
-                            : "N/A"}
+                              style={{
+                                strokeDasharray: `${
+                                  data.vote_average ? data.vote_average * 10 : 0
+                                }, 100`,
+                              }}
+                            />
+                          </svg>
+                          <div className="progress-percentage">
+                            {data.vote_average
+                              ? `${(data.vote_average * 10).toFixed(0)}%`
+                              : "N/A"}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               </div>
             ))

@@ -163,7 +163,7 @@ const CardList = ({ category }) => {
                         src={
                           movie.poster_path
                             ? `${imageUri}${movie.poster_path}`
-                            : "http://localhost:5173/images/404-img.jpg"
+                            : "/images/404-img.jpg"
                         }
                         className="card-img-top card-list-movie-img-size"
                         alt={

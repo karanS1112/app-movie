@@ -126,7 +126,7 @@ function VideoSlickSlider() {
                           src={
                             videoData.key
                               ? `https://img.youtube.com/vi/${videoData.key}/hqdefault.jpg`
-                              : "http://localhost:5173/images/404-img.jpg"
+                              : "/images/404-img.jpg"
                           }
                           alt="Video Thumbnail"
                           className="video-thumbnail"

@@ -93,7 +93,7 @@ const CastCrewDetail = () => {
               src={
                 selector.profile_path
                   ? `${imageUri + selector.profile_path}`
-                  : "http://localhost:5173/images/404-img.jpg"
+                  : "/images/404-img.jpg"
               }
               alt={selector.name}
               title={selector.name}

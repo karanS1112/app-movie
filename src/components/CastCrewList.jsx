@@ -120,7 +120,7 @@ function CastCrewList() {
                 >
                   <motion.div
                     className="d-flex align-items-center mb-3"
-                    key={index}
+                    key={item.id}
                     initial="hidden"
                     animate="visible"
                     variants={itemContainerVariants}

@@ -113,11 +113,11 @@ const MovieDetail = () => {
                 </div>
               </div>
               <div className="col-md-9">
-                <h1 className="pt-3">
+                <h1 className="pt-3 ms-4">
                   {item.title ? `${item.title} (${year})` : "N/A"}
                 </h1>
                 {item.genres?.length > 0 ? (
-                  <p>
+                  <p className="ms-4">
                     {item.genres
                       .map((data) => (data.name ? data.name : "N/A"))
                       .join(", ")}{" "}
@@ -126,7 +126,7 @@ const MovieDetail = () => {
                 ) : (
                   <p>N/A</p>
                 )}
-                <ul className="list-unstyled">
+                <ul className="list-unstyled m-4">
                   <li className="d-flex align-items-center mb-2">
                     <div className="detail-icon-color me-2">
                       <FiWatch size={20} />

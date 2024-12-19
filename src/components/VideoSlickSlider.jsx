@@ -83,7 +83,7 @@ function VideoSlickSlider() {
     ],
   };
   return (
-    <div className="container">
+    <div className="container video-slick">
       <div className="mt-4">
         <h4>Teaser & Trailer</h4>
         {loading ? (

@@ -54,7 +54,7 @@ function VideoList() {
               .map((item) => (
                 <div className="col-md-3 ">
                   <div
-                    key={item.id}
+                    key={item.key}
                     className="image-wrapper"
                     onClick={() => openModal(item.key)}
                   >

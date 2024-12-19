@@ -332,46 +332,51 @@ body {
 
 .cast-crew-detail-content {
     display: flex;
-    flex-direction: column; /* Default for mobile */
+    flex-direction: column;
+    /* Default for mobile */
     gap: 1rem;
-  }
-  
-  @media (min-width: 768px) {
+}
+
+@media (min-width: 768px) {
     .cast-crew-detail-content {
-      flex-direction: row; /* Row layout for tablets and larger screens */
+        flex-direction: row;
+        /* Row layout for tablets and larger screens */
     }
-  }
-  
-  .profile-image {
-    max-width: 80%;
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 10px;
-  }
-  
-  .details-container {
+}
+
+.profile-image {
+    max-width: 300px !important;
+    height: auto !important;
+    border-radius: 10px !important;
+}
+
+.details-container {
     flex: 2;
-  }
-  
-  h2 {
-    font-size: 1.5rem; /* Adjust for mobile */
-  }
-  
-  .personal-info p,
-  .biography p {
-    font-size: 1rem; /* Adjust font size for readability */
-  }
-  
-  .read-less-more-wrap {
+}
+
+h2 {
+    font-size: 1.5rem;
+    /* Adjust for mobile */
+}
+
+.personal-info p,
+.biography p {
+    font-size: 1rem;
+    /* Adjust font size for readability */
+}
+
+.read-less-more-wrap {
     color: #ffc107a2;
     cursor: pointer;
-  }
-  
-  @media (min-width: 768px) {
+}
+
+@media (min-width: 768px) {
     h2 {
-      font-size: 2rem; /* Larger font for bigger screens */
+        font-size: 2rem;
+        /* Larger font for bigger screens */
     }
-  }
-  
+}
+
 
 
 /* Modal Overlay */
@@ -445,7 +450,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100%;
-    margin-top: 50%;
+    margin-top: 68%;
 }
 
 .view-more-button h5 {
@@ -480,6 +485,12 @@ body {
     background: #ffc107a2 !important;
     transform-origin: 0%;
     z-index: 9999 !important;
+}
+
+@media (max-width: 598px) {
+    .progress-bar {
+        display: none !important;
+    }
 }
 
 /* video section  */
@@ -529,13 +540,24 @@ body {
     justify-content: center;
     height: 100%;
     margin-top: 35%;
+
+}
+
+.video-view-more-button h5 {
+    color: white;
+    background-color: #000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
 .video-view-more-button h5:hover {
-    background-color: #0c0c0c;
-    color: #d6d6d6;
-    height: 100%;
+    background-color: #c0c0c0;
+    color: #000;
+    padding: 10px;
+    /* height: 100%; */
 }
+
 
 /* player wraper  */
 .player-wrapper {
@@ -744,4 +766,20 @@ body {
 
 .search-result-item {
     cursor: pointer;
+}
+
+.cast-slick .slick-prev {
+    left: -17px !important;
+}
+
+.cast-slick .slick-next {
+    right: -17px !important;
+}
+
+.video-slick .slick-prev {
+    left: -17px !important;
+}
+
+.video-slick .slick-next {
+    right: -17px !important;
 }

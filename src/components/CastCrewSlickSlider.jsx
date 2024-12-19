@@ -62,7 +62,7 @@ function CastCrewSlickSlider() {
   };
 
   return (
-    <div className="container">
+    <div className="container cast-slick">
       <div className="mt-4">
         <h4>Cast & Crew</h4>
         {loading ? (
@@ -101,7 +101,7 @@ function CastCrewSlickSlider() {
                         src={
                           castData.profile_path
                             ? `${imageUri}${castData.profile_path}`
-                            : "./images/404-img.jpg"
+                            : "/images/404-img.jpg"
                         }
                         className="card-img-top home-movie-img-size"
                         alt={

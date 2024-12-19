@@ -187,7 +187,7 @@ body {
 }
 
 .home-movie-img-size {
-    height: 250px;
+    height: auto;
     object-fit: cover;
     border-bottom: 3px solid #c2bdbd;
 }

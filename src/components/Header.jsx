@@ -28,8 +28,8 @@ const Header = (props) => {
                 to="/"
                 className={(e) =>
                   e.isActive
-                    ? "nav-link px-2 text-warning active"
-                    : "nav-link px-2 text-white"
+                    ? "nav-link p-2 text-warning active"
+                    : "nav-link p-2 text-white"
                 }
               >
                 Home
@@ -40,8 +40,8 @@ const Header = (props) => {
                 to="/movie/now-playing"
                 className={(e) =>
                   e.isActive
-                    ? "nav-link px-2 text-warning active"
-                    : "nav-link px-2 text-white"
+                    ? "nav-link p-2 text-warning active"
+                    : "nav-link p-2 text-white"
                 }
               >
                 Now Playing
@@ -52,8 +52,8 @@ const Header = (props) => {
                 to="/movie/up-coming"
                 className={(e) =>
                   e.isActive
-                    ? "nav-link px-2 text-warning active"
-                    : "nav-link px-2 text-white"
+                    ? "nav-link p-2 text-warning active"
+                    : "nav-link p-2 text-white"
                 }
               >
                 Up Coming
@@ -64,8 +64,8 @@ const Header = (props) => {
                 to="/movie/top-rated"
                 className={(e) =>
                   e.isActive
-                    ? "nav-link px-2 text-warning active"
-                    : "nav-link px-2 text-white"
+                    ? "nav-link p-2 text-warning active"
+                    : "nav-link p-2 text-white"
                 }
               >
                 Top Rated
@@ -77,8 +77,8 @@ const Header = (props) => {
                 to="/movie/popular"
                 className={(e) =>
                   e.isActive
-                    ? "nav-link px-2 text-warning active"
-                    : "nav-link px-2 text-white"
+                    ? "nav-link p-2 text-warning active"
+                    : "nav-link p-2 text-white"
                 }
               >
                 Popuplar
@@ -89,8 +89,8 @@ const Header = (props) => {
                 to="/about"
                 className={(e) =>
                   e.isActive
-                    ? "nav-link px-2 text-warning active"
-                    : "nav-link px-2 text-white"
+                    ? "nav-link p-2 text-warning active"
+                    : "nav-link p-2 text-white"
                 }
               >
                 About

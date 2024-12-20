@@ -194,9 +194,9 @@ body {
 .home-movie-img-size:hover {
     transform: scale(1.02);
 }
-.card-body {
+/* .card-body {
     padding: 15px;
-}
+} */
 
 .home-rating-position {
     display: flex;
@@ -791,6 +791,7 @@ h2 {
 }
 .animation-hader-menu .nav-link {
     transition: transform 0.3s ease, color 0.3s ease;
+    margin: 5px;
 }
 
 .animation-hader-menu .nav-link:hover {

@@ -56,7 +56,7 @@ const Header = (props) => {
                     : "nav-link p-2 text-white"
                 }
               >
-                Up Coming
+                Upcoming
               </NavLink>
             </li>
             <li>

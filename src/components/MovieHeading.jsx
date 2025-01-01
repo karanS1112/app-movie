@@ -74,7 +74,7 @@ const MovieHeading = () => {
       data: selector?.movieSlice?.nowPlaying,
     },
     {
-      title: "Up Comming",
+      title: "Upcoming",
       data: selector?.movieSlice?.upcoming,
     },
     {

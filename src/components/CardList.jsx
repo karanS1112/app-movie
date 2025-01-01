@@ -176,13 +176,34 @@ const CardList = ({ category }) => {
                         <h6 className="text-truncate text-black">
                           {movie?.title ? movie.title : "N/A"}
                         </h6>
-                        <div className="card-list-rating-position">
-                          <span className="list-movie-rating">
+                       <div className="home-rating-position">
+                        <div className="circular-progress">
+                          <svg className="progress-circle" viewBox="0 0 36 36">
+                            <path
+                              className="circle-bg"
+                              d="M18 2.0845
+                            a 15.9155 15.9155 0 1 1 0 31.831
+                            a 15.9155 15.9155 0 1 1 0 -31.831"
+                            />
+                            <path
+                              className="circle-progress"
+                              d="M18 2.0845
+                            a 15.9155 15.9155 0 1 1 0 31.831
+                            a 15.9155 15.9155 0 1 1 0 -31.831"
+                              style={{
+                                strokeDasharray: `${
+                                  movie.vote_average ? movie.vote_average * 10 : 0
+                                }, 100`,
+                              }}
+                            />
+                          </svg>
+                          <div className="progress-percentage">
                             {movie.vote_average
                               ? `${(movie.vote_average * 10).toFixed(0)}%`
                               : "N/A"}
-                          </span>
+                          </div>
                         </div>
+                      </div>
                         <h6 className="text-truncate text-black-50">
                           {movie.release_date
                             ? new Intl.DateTimeFormat("en-GB", {

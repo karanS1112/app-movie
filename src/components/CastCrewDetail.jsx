@@ -145,7 +145,7 @@ const CastCrewDetail = () => {
                     className="read-less-more-wrap"
                     onClick={toggleBiography}
                   >
-                    {isExpanded ? "Read Less" : "Read More"}
+                    {isExpanded ? " Read Less" : " Read More"}
                   </span>
                 )}
               </p>

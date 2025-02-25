@@ -14,7 +14,6 @@ const About = () => {
     <div className={`about-page ${isVisible ? 'fade-in' : ''}`}>
       <h1 className="">About Us</h1>
       <div className="about-container">
-        {/* Left Image Section */}
         <div className={`about-image-container ${isVisible ? 'slide-in-left' : ''}`}>
           <img
             src="./images/about.jpg"
@@ -23,15 +22,14 @@ const About = () => {
           />
         </div>
 
-        {/* Right Content Section */}
         <div className={`about-content ${isVisible ? 'slide-in-right' : ''}`}>
-          <p className="description">
+          <p className="">
             Welcome to our Movie App! Dive into the world of entertainment with a vast collection of movies, TV shows, and exclusive content.
           </p>
-          <p className="description">
+          <p className="">
             Whether you are a fan of action-packed blockbusters, heartwarming dramas, or mind-bending thrillers, we have something for everyone.
           </p>
-          <p className="description">
+          <p className="">
             Enjoy seamless streaming and stay updated with our curated movie lists, reviews, and ratings.
           </p>
           <div className="credit">
